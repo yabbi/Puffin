@@ -14,7 +14,7 @@
     <string name="action_sleep">Desligamento automático</string>
     <string name="volume_boost">Aumento de volume</string>
     <string name="download_book_cover">Capa da internet</string>
-    <string name="onboarding.completion.subtitle">Seu primeiro audiolivro está pronto para ser reproduzido. Aproveite sua jornada com o Raven!</string>
+    <string name="onboarding.completion.subtitle">Seu primeiro audiolivro está pronto para ser reproduzido. Aproveite sua jornada com o Puffin!</string>
     <string name="rewind">Retroceder</string>
     <string name="change_book_name">Título</string>
     <string name="pick_book_cover">Capa do sistema de ficheiros</string>
@@ -31,13 +31,13 @@
     <string name="folder_mode_author">Modo Autor de Livro: Subpastas são autores, sub-subpasta são livros.</string>
     <string name="migration_detail_content_name">Nome</string>
     <string name="battery_optimization_action">Atualizar</string>
-    <string name="storage_bug_subtitle">Em certos dispositivos, a app do sistema pode exigir permissões para aceder o armazenamento externo. Esse acesso é essencial para Raven ler os seus audiobooks.</string>
+    <string name="storage_bug_subtitle">Em certos dispositivos, a app do sistema pode exigir permissões para aceder o armazenamento externo. Esse acesso é essencial para Puffin ler os seus audiobooks.</string>
     <string name="select_folder_title_onboarding">Adicione o Seu Primeiro Audiobook</string>
     <string name="select_folder_title_default">Adicionar os seus Audiobook(s)</string>
     <string name="onboarding.button_next">Próximo</string>
     <string name="onboarding.completion.next_button">Começar a ouvir</string>
     <string name="onboarding.explanation.title">A sua Livraria, do Seu Jeito</string>
-    <string name="onboarding.explanation.subtitle">Com Raven, pode adicionar livros como ficheiros individuais ou organizar eles em pastas. Voçê decide como!</string>
+    <string name="onboarding.explanation.subtitle">Com Puffin, pode adicionar livros como ficheiros individuais ou organizar eles em pastas. Voçê decide como!</string>
     <string name="edit_book_title">Editar livro</string>
     <string name="mark_as_completed">Marcar como Concluído</string>
     <string name="mark_as_current">Marca com Actual</string>
@@ -60,7 +60,7 @@
     <string name="pref_suggest_idea">Sugerir uma ideia</string>
     <string name="pref_use_grid">Utilizar a disposição da grelha</string>
     <string name="pref_report_issue">Reportar um problema</string>
-    <string name="pref_help_translating">Ajuda traduzindo Raven</string>
+    <string name="pref_help_translating">Ajuda traduzindo Puffin</string>
     <string name="pref_get_support">Obter apoio</string>
     <string name="pref_app_version">Versão</string>
     <string name="popup_edit">Editar</string>
@@ -73,7 +73,7 @@
         <item quantity="other">%d ficheiros de áudio</item>
     </plurals>
     <string name="folder_type_book_example_header">Isto fará com que os respectivos livros sejam reconhecidos</string>
-    <string name="folder_type_no_books">Raven não conseguiu encontrar nenhum livro. O ficheiro está no formato certo?</string>
+    <string name="folder_type_no_books">Puffin não conseguiu encontrar nenhum livro. O ficheiro está no formato certo?</string>
     <string name="folder_type_title">Como os seus ficheiros estão organizados?</string>
     <string name="bookmark_just_now">Nesse exato momento</string>
     <string name="voice_intro_first_book">Vamos adicionar uma pasta de Audiolivros para começar a ouvir!</string>
@@ -110,9 +110,9 @@
     <string name="review.request.button.yes">Avalie agora</string>
     <string name="review.request.button.no">Não, obrigado</string>
     <string name="select_folder_subtitle">Gostaria de adicionar um único ficheiro como um livro ou pasta?</string>
-    <string name="onboarding_welcome_title">Seja bem vindo ao Raven!</string>
+    <string name="onboarding_welcome_title">Seja bem vindo ao Puffin!</string>
     <string name="onboarding.completion.title">Está tudo pronto!</string>
-    <string name="review.request.title">Gosta de Raven?</string>
+    <string name="review.request.title">Gosta de Puffin?</string>
     <string name="review.request.content">O seu feedback é importante para nós! Se tiver um momento, avalie-nos e partilhe a sua experiência. Ele ajuda a gente a melhorar ainda mais as suas lidas.</string>
     <string name="review.feedback.title">Sentimos muito por isso!</string>
     <string name="review.feedback.content">Poderia nos dizer o que errado? Valorizamos o seu feedback e com ele sabemos como melhorar a sua experiência.</string>

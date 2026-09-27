@@ -38,7 +38,7 @@
     <string name="pref_suggest_idea">Propuneți o idee</string>
     <string name="pref_use_grid">Folosiți aspect grilă</string>
     <string name="pref_report_issue">Raportați o problemă</string>
-    <string name="pref_help_translating">Ajutați la traducerea Raven</string>
+    <string name="pref_help_translating">Ajutați la traducerea Puffin</string>
     <string name="pref_get_support">Obțineți asistență</string>
     <string name="pref_app_version">Versiune aplicație</string>
     <string name="popup_edit">Modificare</string>
@@ -81,7 +81,7 @@
     <string name="notification_sleep_timer_disable">Dezactivează oprirea temporizată</string>
     <string name="book_header_completed">Cărți citite</string>
     <string name="folder_type_book_example_header">În acest fel, au fost detectate următoarele cărți</string>
-    <string name="folder_type_no_books">Raven nu a găsit nicio carte. Există fișiere audio?</string>
+    <string name="folder_type_no_books">Puffin nu a găsit nicio carte. Există fișiere audio?</string>
     <string name="migration_hint_content">Din cauza modificărilor din versiunile noi de Android, este necesar să alegeți directorul dumneavoastră cu cărți audio folosind selectorul de sistem.\n\nApăsați pe iconița de mai sus pentru a vedea vechile poziții ale cărților.</string>
     <string name="bookmark_just_now">Acum</string>
     <string name="migration_detail_content_added_at">Adăugat la</string>
@@ -92,7 +92,7 @@
     <string name="media_session_recent">Recente</string>
     <string name="pause">Pauză</string>
     <string name="play">Redare</string>
-    <string name="storage_bug_subtitle">Pe anumite dispozitive, o aplicație de sistem are nevoie de anumite permisiuni pentru a accesa stocarea externă. Aceste permisiuni sunt esențiale pentru ca Raven să poată citi cărțile tale audio.</string>
+    <string name="storage_bug_subtitle">Pe anumite dispozitive, o aplicație de sistem are nevoie de anumite permisiuni pentru a accesa stocarea externă. Aceste permisiuni sunt esențiale pentru ca Puffin să poată citi cărțile tale audio.</string>
     <string name="storage_bug_title">Permisiune necesară</string>
     <string name="storage_bug_button">Acordă permisiune</string>
     <string name="generic_error_message">S-a produs o eroare 😢</string>
@@ -104,8 +104,8 @@
     <string name="select_folder_title_default">Adaugă cărțile tale</string>
     <string name="onboarding.completion.next_button">Dă start ascultării</string>
     <string name="onboarding.explanation.title">O bibliotecă așa cum ți-o dorești tu</string>
-    <string name="onboarding.explanation.subtitle">Cu Raven, cărțile tale pot fi adăugate sub forma unui singur fișier sau a unui director de fișiere audio. Tu decizi!</string>
-    <string name="onboarding.completion.subtitle">Prima ta carte este pregătită. Ascultare plăcută cu Raven!</string>
+    <string name="onboarding.explanation.subtitle">Cu Puffin, cărțile tale pot fi adăugate sub forma unui singur fișier sau a unui director de fișiere audio. Tu decizi!</string>
+    <string name="onboarding.completion.subtitle">Prima ta carte este pregătită. Ascultare plăcută cu Puffin!</string>
     <string name="review.feedback.title">Ne pare rău să auzim asta!</string>
     <string name="review.request.button.yes">Evaluează acum</string>
     <string name="review.request.button.no">Nu, mulțumesc</string>
@@ -126,9 +126,9 @@
     <string name="sleep_timer.button.decrement">Mai scurtă</string>
     <string name="select_folder_type_folder">Director</string>
     <string name="select_folder_subtitle">Doriți să adăugați o carte bazată pe un singur fișier sau pe un director?</string>
-    <string name="onboarding_welcome_title">Acesta este Raven.</string>
+    <string name="onboarding_welcome_title">Acesta este Puffin.</string>
     <string name="onboarding_welcome_subtitle">Player-ul tău personal de cărți audio - să parcurgem împreună un scurt ghid.</string>
     <string name="onboarding.completion.title">Ai parcurs cu succes acest ghid.</string>
-    <string name="review.request.title">Îți place Raven?</string>
+    <string name="review.request.title">Îți place Puffin?</string>
     <string name="review.request.content">Ne pasă de feedback-ul tău! Te rugăm să ne evaluezi și să ne descrii experiența ta! Ne ajută să facem îmbunătățiri și să oferim o experiență mai bună.</string>
 </resources>

@@ -93,7 +93,7 @@
     <string name="storage_bug_title">Требуется разрешение</string>
     <string name="media_session_recent">Недавние</string>
     <string name="notification_sleep_timer_enable">Включить таймер сна</string>
-    <string name="storage_bug_subtitle">На некоторых устройствах системное приложение не имеет необходимого разрешения для доступа к внешнему хранилищу. Этот доступ необходим для того, чтобы Raven мог читать ваши аудиокниги.</string>
+    <string name="storage_bug_subtitle">На некоторых устройствах системное приложение не имеет необходимого разрешения для доступа к внешнему хранилищу. Этот доступ необходим для того, чтобы Puffin мог читать ваши аудиокниги.</string>
     <string name="notification_sleep_timer_disable">Отключить таймер сна</string>
     <string name="generic_error_message">Что-то пошло не так 😢</string>
     <string name="media_session_root">Все аудиокниги</string>
@@ -106,12 +106,12 @@
     <string name="review.feedback.title">Нам жаль это слышать!</string>
     <string name="review.feedback.button.yes">Отправить отзыв</string>
     <string name="review.feedback.button.no">Отмена</string>
-    <string name="review.request.title">Нравится Raven?</string>
+    <string name="review.request.title">Нравится Puffin?</string>
     <string name="select_folder_title_onboarding">Добавьте свою первую аудиокнигу</string>
     <string name="select_folder_subtitle">Хотите добавить один файл в виде книги или папки?</string>
-    <string name="onboarding_welcome_title">Добро пожаловать в Raven!</string>
+    <string name="onboarding_welcome_title">Добро пожаловать в Puffin!</string>
     <string name="onboarding_welcome_subtitle">Ваш личный карманный проигрыватель аудиокниг. Давайте настроим.</string>
-    <string name="onboarding.explanation.subtitle">С помощью Raven вы можете добавлять книги в виде отдельных файлов или формировать их в папкам. Выбирайте!</string>
+    <string name="onboarding.explanation.subtitle">С помощью Puffin вы можете добавлять книги в виде отдельных файлов или формировать их в папкам. Выбирайте!</string>
     <string name="review.request.content">Ваш отзыв важен для нас! Если у вас есть время, оцените нас и поделитесь своим опытом. Это помогает нам вносить улучшения и обеспечивает качество прослушивания.</string>
     <string name="review.feedback.content">Не могли бы вы рассказать нам, что пошло не так? Мы ценим ваши отзывы, и они помогают нам улучшить ваш опыт.</string>
     <string name="cover_search.author">Автор</string>
@@ -122,7 +122,7 @@
     <string name="onboarding.button_next">Далее</string>
     <string name="onboarding.explanation.title">Ваша библиотека, Ваш выбор</string>
     <string name="onboarding.completion.title">Все готово!</string>
-    <string name="onboarding.completion.subtitle">Ваша первая аудиокнига готова к воспроизведению. Наслаждайтесь своим путешествием с Raven!</string>
+    <string name="onboarding.completion.subtitle">Ваша первая аудиокнига готова к воспроизведению. Наслаждайтесь своим путешествием с Puffin!</string>
     <string name="onboarding.completion.next_button">Начать прослушивание</string>
     <string name="sleep_timer.title">Приятных снов! 🌙</string>
     <plurals name="minutes">
@@ -141,7 +141,7 @@
     <string name="playback.current_chapter">Текущая глава</string>
     <string name="dialog_cancel">Отмена</string>
     <string name="end_of_chapter">Конец главы</string>
-    <string name="onboarding_analytics_consent_title">Помогите улучшить Raven</string>
+    <string name="onboarding_analytics_consent_title">Помогите улучшить Puffin</string>
     <string name="onboarding_analytics_consent_description">Разрешите нам собирать анонимные данные об использовании, чтобы улучшить приложение. Вы можете изменить это позже в настройках.</string>
     <string name="onboarding_analytics_consent_button_enable">Продолжить с отправкой аналитики</string>
     <string name="onboarding_analytics_consent_button_disable">Продолжить без отправки аналитики</string>

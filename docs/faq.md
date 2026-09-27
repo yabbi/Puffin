@@ -7,32 +7,32 @@ permalink: /faq/
 
 ### How do I add my audiobooks?
 
-Open Raven, add your main audiobook folder, and each subfolder becomes a book automatically. Raven plays files already on your device — it does not download or stream content.
+Open Puffin, add your main audiobook folder, and each subfolder becomes a book automatically. Puffin plays files already on your device — it does not download or stream content.
 
 ### Which file formats are supported?
 
-Raven plays the audio formats natively supported by Android, including M4B, MP3, M4A, OGG, OGA and OPUS. You can see the full list of platform-supported formats [here](https://developer.android.com/media/media3/exoplayer/supported-formats). If a file that should work isn't showing up, it is most likely corrupted or incompatible with your Android version.
+Puffin plays the audio formats natively supported by Android, including M4B, MP3, M4A, OGG, OGA and OPUS. You can see the full list of platform-supported formats [here](https://developer.android.com/media/media3/exoplayer/supported-formats). If a file that should work isn't showing up, it is most likely corrupted or incompatible with your Android version.
 
-### Does Raven collect any data?
+### Does Puffin collect any data?
 
-No. Raven has no analytics, no ads, and no trackers. Everything stays on your device. See the [Privacy Policy](/Vultr/privacy-policy/).
+No. Puffin has no analytics, no ads, and no trackers. Everything stays on your device. See the [Privacy Policy](/Vultr/privacy-policy/).
 
 ### Why isn't feature X in the app?
 
-Raven follows a principle of minimalism — it includes only the settings and controls that are genuinely useful, so the app stays simple and reliable.
+Puffin follows a principle of minimalism — it includes only the settings and controls that are genuinely useful, so the app stays simple and reliable.
 
 ### How do I resume after the sleep timer stops?
 
-When the sleep timer elapses, Raven pauses after a brief fade-out. To keep listening:
+When the sleep timer elapses, Puffin pauses after a brief fade-out. To keep listening:
 
 - **Shake to resume** — shake your device shortly after it pauses to restart playback.
 - **Open to resume** — open the app and press play again.
 
 (On a few devices, shake detection may be less reliable.)
 
-### Is Raven free? Is it open source?
+### Is Puffin free? Is it open source?
 
-Yes to both. Raven is completely free, with no ads or subscriptions, and is open source under the GPLv3. The code is at <https://github.com/Emerald-Realm/Vultr>.
+Yes to both. Puffin is completely free, with no ads or subscriptions, and is open source under the GPLv3. The code is at <https://github.com/Emerald-Realm/Vultr>.
 
 ### How can I report a bug or request a feature?
 

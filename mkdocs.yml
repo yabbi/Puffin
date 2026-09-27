@@ -1,10 +1,10 @@
-site_name: Raven
-site_description: "Raven is an open source audiobook player built for simplicity and accessibility. Listen to, organize, and enjoy your audiobooks effortlessly."
+site_name: Puffin
+site_description: "Puffin is an open source audiobook player built for simplicity and accessibility. Listen to, organize, and enjoy your audiobooks effortlessly."
 site_author: Emerald-Realm
 site_url: https://praiseoyegoke.framer.website/raven
 
 repo_url: https://github.com/Emerald-Realm/Vultr
-repo_name: "Raven on GitHub"
+repo_name: "Puffin on GitHub"
 
 nav:
   - Home: index.md
@@ -51,4 +51,4 @@ plugins:
         'privacy_policy.md': 'privacy-policy.md'
         'privacy.md': 'privacy-policy.md'
 
-copyright: "Raven — Emerald-Realm"
+copyright: "Puffin — Emerald-Realm"

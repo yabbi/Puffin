@@ -18,8 +18,8 @@
     </plurals>
     <string name="generic_error_message">Настана грешка 😢</string>
     <string name="book_header_current">Тековни</string>
-    <string name="pref_help_translating">Поможете за превод на Raven</string>
-    <string name="folder_type_no_books">Raven не можеше да пронајде книги. Дали сте сигурни дека има аудио датотеки?</string>
+    <string name="pref_help_translating">Поможете за превод на Puffin</string>
+    <string name="folder_type_no_books">Puffin не можеше да пронајде книги. Дали сте сигурни дека има аудио датотеки?</string>
     <string name="cover">Корица</string>
     <string name="play_pause">Пушти / Пауза</string>
     <string name="fast_forward">Побрзо напред</string>
@@ -83,12 +83,12 @@
     <string name="select_folder_type_file">Датотека</string>
     <string name="select_folder_type_folder">Фолдер</string>
     <string name="select_folder_subtitle">Дали сакате да додадете една датотека како една книга или еден фолдер како книга?</string>
-    <string name="onboarding_welcome_title">Добредојдовте во Raven!</string>
+    <string name="onboarding_welcome_title">Добредојдовте во Puffin!</string>
     <string name="onboarding.button_next">Наредна</string>
     <string name="onboarding.explanation.title">Вашата библиотека, на Ваш начин</string>
-    <string name="onboarding.explanation.subtitle">Со Raven можете да додавате поединечни датотеки како посебни книги или можете да ги организирате во фолдери. Изборот е Ваш!</string>
+    <string name="onboarding.explanation.subtitle">Со Puffin можете да додавате поединечни датотеки како посебни книги или можете да ги организирате во фолдери. Изборот е Ваш!</string>
     <string name="onboarding.completion.next_button">Почнете со слушање</string>
-    <string name="review.request.title">Дали ви се допаѓа Raven?</string>
+    <string name="review.request.title">Дали ви се допаѓа Puffin?</string>
     <string name="review.feedback.title">Жал ни е што го слушаме тоа!</string>
     <string name="review.feedback.button.yes">Испрати мислење</string>
     <string name="sleep_timer.title">Слатки соништа! 🌙</string>
@@ -111,7 +111,7 @@
     <string name="migration_hint_confirm">Разбирам</string>
     <string name="migration_detail_content_name">Име</string>
     <string name="migration_detail_content_bookmarks">Обележувачи</string>
-    <string name="storage_bug_subtitle">Кај некои уреди, системска апликација нема доволно пермисии да го пристапи надворешното складиште за податоци. Овој пристап е клучен за Raven да може да ги вчита вашите аудио книги.</string>
+    <string name="storage_bug_subtitle">Кај некои уреди, системска апликација нема доволно пермисии да го пристапи надворешното складиште за податоци. Овој пристап е клучен за Puffin да може да ги вчита вашите аудио книги.</string>
     <string name="migration_delete_dialog_content">Ако ги избришете старите позиции, нема да можете да ги вратите старите позиции на слушање.</string>
     <string name="onboarding.completion.title">Спремни сте!</string>
     <string name="review.request.content">Вашето мислење ни значи! Ако имате момент, оценете не и споделете го вашето искуство. ќе ни помогне да ја подобриме апликацијата и да овозможиме подобро искуство на слушање.</string>
@@ -121,7 +121,7 @@
     <string name="storage_bug_title">Потребна е пермисија</string>
     <string name="migration_delete_dialog_action_keep">Чувај го</string>
     <string name="delete_book_bottom_sheet_title">Избриши книга</string>
-    <string name="onboarding.completion.subtitle">Вашата прва аудио книга е спремна за слушање. Уживајте во патувањето со Raven!</string>
+    <string name="onboarding.completion.subtitle">Вашата прва аудио книга е спремна за слушање. Уживајте во патувањето со Puffin!</string>
     <string name="delete_book_dialog_deletion_confirmation">Избриши ги моите датотеки</string>
     <string name="review.request.button.yes">Оценете не сега</string>
     <string name="media_session_root">Сите аудио книги</string>

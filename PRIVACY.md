@@ -2,15 +2,15 @@
 
 **Last updated: June 17, 2026**
 
-This Privacy Policy describes how the **Raven Audiobook Player** app ("Raven", "the app") handles your information. Raven is free, open-source software published by **Emerald Realm** ("we", "us").
+This Privacy Policy describes how the **Puffin Audiobook Player** app ("Puffin", "the app") handles your information. Puffin is free, open-source software published by **Emerald Realm** ("we", "us").
 
 ## The short version
 
-**Raven does not collect, store, or share any personal data.** There are no user accounts, no analytics, no advertising, no trackers, and no third-party data-collection SDKs. Everything about your library — your books, playback positions, bookmarks, and settings — stays on your device.
+**Puffin does not collect, store, or share any personal data.** There are no user accounts, no analytics, no advertising, no trackers, and no third-party data-collection SDKs. Everything about your library — your books, playback positions, bookmarks, and settings — stays on your device.
 
 ## Information we collect
 
-**None.** Raven does not gather your identity, your device identifiers, your location, your IP address, your usage, or any analytics. We have no servers that receive your data.
+**None.** Puffin does not gather your identity, your device identifiers, your location, your IP address, your usage, or any analytics. We have no servers that receive your data.
 
 ## Your audiobooks and app data
 
@@ -18,7 +18,7 @@ Your audiobook files, playback positions, bookmarks, covers, and preferences are
 
 ## Internet access
 
-Raven requests the `INTERNET` permission for a single optional feature: **searching online for a missing cover image**. If — and only if — you choose to search for a cover, the title or search term you type is sent to the public cover-image provider in order to return results. No identifier, account, or personal information is attached to that request. If you never use online cover search, Raven makes no network calls for content.
+Puffin requests the `INTERNET` permission for a single optional feature: **searching online for a missing cover image**. If — and only if — you choose to search for a cover, the title or search term you type is sent to the public cover-image provider in order to return results. No identifier, account, or personal information is attached to that request. If you never use online cover search, Puffin makes no network calls for content.
 
 ## Permissions and why they are used
 
@@ -27,7 +27,7 @@ Raven requests the `INTERNET` permission for a single optional feature: **search
 - **Wake lock** — to keep playback running with the screen off.
 - **Ignore battery optimizations** (optional, only if you grant it) — to prevent the system from stopping long playback sessions.
 
-Raven does **not** request location, contacts, microphone, camera, or an advertising ID.
+Puffin does **not** request location, contacts, microphone, camera, or an advertising ID.
 
 ## Data sharing
 
@@ -35,7 +35,7 @@ We do not sell, rent, or share any data, because we do not collect any.
 
 ## Children
 
-Raven is suitable for all ages and does not knowingly collect any information from anyone, including children.
+Puffin is suitable for all ages and does not knowingly collect any information from anyone, including children.
 
 ## Changes to this policy
 

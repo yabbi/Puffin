@@ -46,7 +46,7 @@
         <item quantity="many">%d fitxers d\'àudio</item>
         <item quantity="other">%d fitxers d\'àudio</item>
     </plurals>
-    <string name="folder_type_no_books">El Raven no ha pogut detectar cap llibre. Hi ha cap fitxer d\'àudio?</string>
+    <string name="folder_type_no_books">El Puffin no ha pogut detectar cap llibre. Hi ha cap fitxer d\'àudio?</string>
     <string name="folder_type_title">Com s\'estructuren els fitxers?</string>
     <string name="bookmark_just_now">Ara mateix</string>
     <string name="voice_intro_first_book">Afegiu la carpeta de l\'audiollibre perquè pugueu començar a escoltar-lo.</string>
@@ -77,20 +77,20 @@
     <string name="onboarding.button_next">Següent</string>
     <string name="notification_sleep_timer_disable">Desactiva el temporitzador de repòs</string>
     <string name="select_folder_title_default">Afegeix audiollibres</string>
-    <string name="onboarding_welcome_title">Us donem la benvinguda a Raven!</string>
+    <string name="onboarding_welcome_title">Us donem la benvinguda a Puffin!</string>
     <string name="generic_error_message">Alguna cosa ha anat malament 😢</string>
     <string name="select_folder_title_onboarding">Afegeix el primer audiollibre</string>
     <string name="onboarding.explanation.title">La teva biblioteca, a la teva manera</string>
     <string name="onboarding_welcome_subtitle">El teu reproductor d\'audiollibres de butxaca. Comencem.</string>
     <string name="select_folder_subtitle">Voleu afegir un sol fitxer com a llibre o una carpeta?</string>
     <string name="onboarding.completion.next_button">Comenceu a escoltar-lo</string>
-    <string name="review.request.title">Esteu gaudint del Raven?</string>
+    <string name="review.request.title">Esteu gaudint del Puffin?</string>
     <string name="review.request.button.yes">Valoreu-lo ara</string>
     <string name="review.request.button.no">No, gràcies</string>
     <string name="onboarding.completion.title">Esteu a punt!</string>
     <string name="review.feedback.title">Això que diu ens sap greu!</string>
-    <string name="onboarding.completion.subtitle">El seu primer audiollibre està a punt per reproduir-se. Gaudiu del teu viatge amb Raven!</string>
-    <string name="onboarding.explanation.subtitle">Amb Raven, podeu afegir llibres com a fitxers individuals o organitzar-los en carpetes. Com vulgueu.</string>
+    <string name="onboarding.completion.subtitle">El seu primer audiollibre està a punt per reproduir-se. Gaudiu del teu viatge amb Puffin!</string>
+    <string name="onboarding.explanation.subtitle">Amb Puffin, podeu afegir llibres com a fitxers individuals o organitzar-los en carpetes. Com vulgueu.</string>
     <string name="review.feedback.button.yes">Envieu comentaris</string>
     <string name="review.feedback.button.no">Cancel·la</string>
     <string name="sleep_timer.button.increment">Més llarg</string>
@@ -115,7 +115,7 @@
     <string name="pref_theme_dark">Tema fosc</string>
     <string name="pref_auto_rewind_title">Rebobina automàticament</string>
     <string name="pref_suggest_idea">Suggeriu una idea</string>
-    <string name="pref_help_translating">Ajudeu a traduir el Raven</string>
+    <string name="pref_help_translating">Ajudeu a traduir el Puffin</string>
     <string name="book_header_current">Actual</string>
     <string name="book_header_not_started">Encara no s\'ha iniciat</string>
     <string name="book_header_completed">Completat</string>
@@ -129,6 +129,6 @@
     <string name="migration_delete_dialog_title">Suprimeix les posicions</string>
     <string name="delete_book_dialog_deletion_confirmation">Suprimeix els fitxers</string>
     <string name="review.request.content">Els seus comentaris ens importen. Si teniu un moment, valoreu-nos i compartiu la seva experiència. Ens ajuda a fer millores i a oferir una millor experiència.</string>
-    <string name="storage_bug_subtitle">Per a determinats dispositius, a una aplicació del sistema li falta el permís necessari per accedir a l\'emmagatzematge extern. Aquest accés és essencial perquè el Raven llegeixi els audiollibres.</string>
+    <string name="storage_bug_subtitle">Per a determinats dispositius, a una aplicació del sistema li falta el permís necessari per accedir a l\'emmagatzematge extern. Aquest accés és essencial perquè el Puffin llegeixi els audiollibres.</string>
     <string name="migration_hint_content">A causa dels canvis en les versions més noves d\'Android, és necessari seleccionar la carpeta de l\'audiollibre utilitzant el selector del sistema. \n \nFeu clic a la icona de dalt per veure les posicions antigues del llibre.</string>
 </resources>

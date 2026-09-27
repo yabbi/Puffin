@@ -37,7 +37,7 @@
     <string name="pref_suggest_idea">विचार सुझाएं</string>
     <string name="pref_use_grid">ग्रिड लेआउट का प्रयोग</string>
     <string name="pref_report_issue">समस्या की रिपोर्ट करें</string>
-    <string name="pref_help_translating">Raven का अनुवाद करने में मदद करें</string>
+    <string name="pref_help_translating">Puffin का अनुवाद करने में मदद करें</string>
     <string name="pref_get_support">सहायता प्राप्त करें</string>
     <string name="pref_app_version">ऐप संस्करण</string>
     <string name="popup_edit">संपादन</string>
@@ -56,7 +56,7 @@
         <item quantity="other">%d ऑडियो फाइलें</item>
     </plurals>
     <string name="folder_type_book_example_header">इससे निम्नलिखित पुस्तकों का पता चलेगा</string>
-    <string name="folder_type_no_books">Raven किसी भी किताब का पता नहीं लगा सकी। क्या कोई ऑडियो फाइल है?</string>
+    <string name="folder_type_no_books">Puffin किसी भी किताब का पता नहीं लगा सकी। क्या कोई ऑडियो फाइल है?</string>
     <string name="folder_type_title">आपकी फाइलें कैसे संरचित हैं?</string>
     <string name="bookmark_just_now">बस अभी</string>
     <string name="voice_intro_first_book">चलिए आपका ऑडियोबुक फोल्डर जोड़ते हैं ताकि आप सुनना शुरू कर सकें!</string>
@@ -101,15 +101,15 @@
     <string name="storage_bug_button">अनुमति प्रदान करें</string>
     <string name="select_folder_type_folder">फोल्डर</string>
     <string name="select_folder_subtitle">क्या आप एक फाइल को पुस्तक या फोल्डर के रूप में जोड़ना चाहेंगे?</string>
-    <string name="onboarding_welcome_title">Raven में आपका स्वागत है!</string>
+    <string name="onboarding_welcome_title">Puffin में आपका स्वागत है!</string>
     <string name="onboarding.button_next">अगला</string>
     <string name="onboarding.explanation.title">आपकी लाइब्रेरी, आपका तरीका</string>
-    <string name="review.request.title">Raven का आनंद ले रहे हैं?</string>
+    <string name="review.request.title">Puffin का आनंद ले रहे हैं?</string>
     <string name="review.request.button.yes">अभी रेट करें</string>
     <string name="select_folder_title_onboarding">अपनी पहली ऑडियोबुक जोड़ें</string>
-    <string name="onboarding.explanation.subtitle">Raven के साथ, आप पुस्तकों को अलग-अलग फाइलों के रूप में जोड़ सकते हैं या उन्हें फोल्डरों में व्यवस्थित कर सकते हैं। आप चुनें!</string>
+    <string name="onboarding.explanation.subtitle">Puffin के साथ, आप पुस्तकों को अलग-अलग फाइलों के रूप में जोड़ सकते हैं या उन्हें फोल्डरों में व्यवस्थित कर सकते हैं। आप चुनें!</string>
     <string name="onboarding.completion.title">आप पूरी तरह तैयार हैं!</string>
-    <string name="onboarding.completion.subtitle">आपकी पहली ऑडियोबुक चलने के लिए तैयार है। Raven के साथ अपनी यात्रा का आनंद लें!</string>
+    <string name="onboarding.completion.subtitle">आपकी पहली ऑडियोबुक चलने के लिए तैयार है। Puffin के साथ अपनी यात्रा का आनंद लें!</string>
     <string name="onboarding.completion.next_button">सुनना शुरू करें</string>
     <string name="select_folder_title_default">अपनी ऑडियोबुक जोड़ें</string>
     <string name="select_folder_type_file">फाइल</string>
@@ -126,7 +126,7 @@
         <item quantity="one">%d मिनट</item>
         <item quantity="other">%d मिनट</item>
     </plurals>
-    <string name="storage_bug_subtitle">कुछ उपकरणों के लिए, एक सिस्टम ऐप में बाहरी स्टोरेज तक पहुंचने के लिए आवश्यक अनुमति नहीं है। Raven के लिए आपकी ऑडियोबुक पढ़ने के लिए यह पहुंच आवश्यक है।</string>
+    <string name="storage_bug_subtitle">कुछ उपकरणों के लिए, एक सिस्टम ऐप में बाहरी स्टोरेज तक पहुंचने के लिए आवश्यक अनुमति नहीं है। Puffin के लिए आपकी ऑडियोबुक पढ़ने के लिए यह पहुंच आवश्यक है।</string>
     <string name="review.request.content">आपकी प्रतिक्रिया हमारे लिए मायने रखती है! यदि आपके पास कुछ समय है, तो हमें रेट करें और अपना अनुभव साझा करें। यह हमें सुधार करने और बेहतर सुनने का अनुभव प्रदान करने में मदद करता है।</string>
     <string name="pref_audiobook_folders_explanation">ऑडियोबुक के लिए स्कैन किए गए फ़ोल्डर मैनेज करें</string>
 </resources>

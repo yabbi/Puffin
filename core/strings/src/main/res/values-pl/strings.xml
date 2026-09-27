@@ -60,7 +60,7 @@
         <item quantity="other">%d plików audio</item>
     </plurals>
     <string name="folder_type_book_example_header">Będzie to skutkowało wykryciem następujących książek</string>
-    <string name="folder_type_no_books">Raven nie wykrył żadnych książek. Czy na pewno są tam pliki audio?</string>
+    <string name="folder_type_no_books">Puffin nie wykrył żadnych książek. Czy na pewno są tam pliki audio?</string>
     <string name="folder_type_title">Jaka jest struktura twoich plików?</string>
     <string name="bookmark_just_now">Przed chwilą</string>
     <string name="voice_intro_first_book">Dodajmy twój folder z audiobookami aby rozpocząć słuchanie!</string>
@@ -104,15 +104,15 @@
     <string name="sleep_timer.title">Słodkich snów! 🌙</string>
     <string name="onboarding.button_next">Dalej</string>
     <string name="select_folder_type_folder">Folder</string>
-    <string name="onboarding.completion.subtitle">Twój pierwszy audiobook jest gotowy do odtworzenia. Ciesz się podróżą z aplikacją Raven!</string>
+    <string name="onboarding.completion.subtitle">Twój pierwszy audiobook jest gotowy do odtworzenia. Ciesz się podróżą z aplikacją Puffin!</string>
     <string name="folder_mode_author">Tryb autor-książka: Podfoldery to autorzy a dalsze podfoldery to książki.</string>
     <string name="storage_bug_title">Wymagany dostęp</string>
-    <string name="storage_bug_subtitle">W przypadku niektórych urządzeń aplikacja systemowa nie ma uprawnień niezbędnych do uzyskania dostępu do pamięci zewnętrznej. Dostęp ten jest niezbędny, aby aplikacja Raven mogła odczytywać książki audio.</string>
+    <string name="storage_bug_subtitle">W przypadku niektórych urządzeń aplikacja systemowa nie ma uprawnień niezbędnych do uzyskania dostępu do pamięci zewnętrznej. Dostęp ten jest niezbędny, aby aplikacja Puffin mogła odczytywać książki audio.</string>
     <string name="review.feedback.title">Przykro nam to słyszeć!</string>
     <string name="onboarding.explanation.title">Twoja Biblioteka, Twój Wybór</string>
     <string name="review.request.button.yes">Oceń Teraz</string>
     <string name="select_folder_type_file">Plik</string>
-    <string name="onboarding_welcome_title">Witaj w Raven!</string>
+    <string name="onboarding_welcome_title">Witaj w Puffin!</string>
     <plurals name="minutes">
         <item quantity="one">%d minuta</item>
         <item quantity="few">%d minut</item>
@@ -124,7 +124,7 @@
     <string name="onboarding.completion.title">Wszystko gotowe!</string>
     <string name="review.request.button.no">Nie, Dziękuję</string>
     <string name="review.feedback.content">Czy możesz nam powiedzieć, co poszło nie tak? Doceniamy Twoją opinię, która pomoże nam poprawić Twoje doświadczenia.</string>
-    <string name="onboarding.explanation.subtitle">Aplikacja Raven umożliwia dodawanie książek jako pojedynczych plików lub organizowanie ich w folderach. To ty wybierasz!</string>
+    <string name="onboarding.explanation.subtitle">Aplikacja Puffin umożliwia dodawanie książek jako pojedynczych plików lub organizowanie ich w folderach. To ty wybierasz!</string>
     <string name="onboarding.completion.next_button">Zacznij Słuchać</string>
     <string name="review.request.content">Twoja opinia ma dla nas znaczenie! Jeśli masz chwilę, oceń nas i podziel się swoimi doświadczeniami. Pomaga nam to wprowadzać ulepszenia i oferować lepsze wrażenia słuchowe.</string>
     <string name="select_folder_title_default">Dodaj swoje Audiobooki</string>
@@ -132,7 +132,7 @@
     <string name="select_folder_title_onboarding">Dodaj Swój Pierwszy Audiobook</string>
     <string name="sleep_timer.button.increment">Dłużej</string>
     <string name="cover_search.icon_recent">Ostatnie wyszukiwanie</string>
-    <string name="review.request.title">Podoba ci się Raven?</string>
+    <string name="review.request.title">Podoba ci się Puffin?</string>
     <string name="sleep_timer.button.decrement">Krócej</string>
     <string name="auto_sleep_timer.title">Automatyczny Wyłącznik Czasowy</string>
     <string name="auto_sleep_timer.subtitle">Automatycznie uruchamia wyłącznik czasowy po rozpoczęciu odtwarzania pomiędzy %1$s a %2$s</string>
@@ -141,7 +141,7 @@
     <string name="playback.current_chapter">Aktualny rozdział</string>
     <string name="pref_faq">Najczęściej zadawane pytania (FAQ)</string>
     <string name="end_of_chapter">Koniec rozdziału</string>
-    <string name="onboarding_analytics_consent_title">Pomóż ulepszać Raven</string>
+    <string name="onboarding_analytics_consent_title">Pomóż ulepszać Puffin</string>
     <string name="onboarding_analytics_consent_description">Zezwól na gromadzenie anonimowych danych dotyczących użytkowania, aby pomóc nam ulepszyć aplikację. Możesz zmienić to ustawienie później w opcjach.</string>
     <string name="onboarding_analytics_consent_button_enable">Kontynuuj z analizą</string>
     <string name="onboarding_analytics_consent_button_disable">Kontynuuj bez analizy</string>

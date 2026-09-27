@@ -54,7 +54,7 @@
         <item quantity="other">%d个声音文件</item>
     </plurals>
     <string name="folder_type_book_example_header">这样操作将找到以下有声书</string>
-    <string name="folder_type_no_books">Raven没有找到任何有声书。声音文件是否存在？</string>
+    <string name="folder_type_no_books">Puffin没有找到任何有声书。声音文件是否存在？</string>
     <string name="folder_type_title">您的文件是如何组织的？</string>
     <string name="bookmark_just_now">刚才</string>
     <string name="voice_intro_first_book">首先添加有声书文件夹，然后就可以开始听书啦！</string>
@@ -91,7 +91,7 @@
     <string name="generic_error_retry">重试</string>
     <string name="storage_bug_title">需要权限</string>
     <string name="cover_search.icon_recent">近期查询</string>
-    <string name="storage_bug_subtitle">对于某些设备，系统应用程序缺少访问外部存储的必要权限。此访问对于Raven阅读您的有声读物至关重要。</string>
+    <string name="storage_bug_subtitle">对于某些设备，系统应用程序缺少访问外部存储的必要权限。此访问对于Puffin阅读您的有声读物至关重要。</string>
     <string name="cover_search.author">作者</string>
     <string name="generic_error_message">发生了错误😢</string>
     <string name="select_folder_subtitle">你想将单个文件添加为书本还是文件夹？</string>
@@ -100,10 +100,10 @@
     <string name="select_folder_title_default">添加你的有声书</string>
     <string name="storage_bug_button">给予权限</string>
     <string name="select_folder_type_file">文件</string>
-    <string name="onboarding_welcome_title">欢迎使用Raven！</string>
+    <string name="onboarding_welcome_title">欢迎使用Puffin！</string>
     <string name="onboarding_welcome_subtitle">你的个人口袋有声读物播放器。现在来进行配置吧。</string>
     <string name="select_folder_title_onboarding">添加你的第一本有声书</string>
-    <string name="onboarding.explanation.subtitle">使用 Raven，您可以单独添加书籍文件或将它们组织到文件夹中。您来选择！</string>
+    <string name="onboarding.explanation.subtitle">使用 Puffin，您可以单独添加书籍文件或将它们组织到文件夹中。您来选择！</string>
     <string name="onboarding.explanation.title">您的图书馆，您的风格</string>
-    <string name="onboarding.completion.subtitle">您的第一本有声书已准备好播放。与 Raven 一起享受您的旅程！</string>
+    <string name="onboarding.completion.subtitle">您的第一本有声书已准备好播放。与 Puffin 一起享受您的旅程！</string>
 </resources>

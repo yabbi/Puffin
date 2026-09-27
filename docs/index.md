@@ -1,9 +1,9 @@
 ---
-title: Raven Audiobook Player
+title: Puffin Audiobook Player
 permalink: /
 ---
 
-# Raven
+# Puffin
 
 **Open source audiobook player with the best experience.**
 
@@ -12,16 +12,16 @@ A minimalist, offline, open-source audiobook player for Android. No accounts, no
 ## 📸 Screenshots
 
 <p>
-  <img src="/Vultr/images/knight-book-details.png" width="180" alt="Raven book details on tablet" />
-  <img src="/Vultr/images/knight-now-playing.png" width="180" alt="Raven now playing on tablet" />
-  <img src="/Vultr/images/knight-tablet-vertical.png" width="180" alt="Raven tablet vertical view" />
-  <img src="/Vultr/images/playstore.png" width="180" alt="Raven library screen" />
-  <img src="/Vultr/images/playstore-1.png" width="180" alt="Raven book details screen" />
-  <img src="/Vultr/images/playstore-2.png" width="180" alt="Raven now playing screen" />
-  <img src="/Vultr/images/playstore-3.png" width="180" alt="Raven history screen" />
-  <img src="/Vultr/images/playstore-4.png" width="180" alt="Raven settings screen" />
-  <img src="/Vultr/images/playstore-5.png" width="180" alt="Raven onboarding screen" />
-  <img src="/Vultr/images/playstore-6.png" width="180" alt="Raven audiobook controls" />
+  <img src="/Vultr/images/knight-book-details.png" width="180" alt="Puffin book details on tablet" />
+  <img src="/Vultr/images/knight-now-playing.png" width="180" alt="Puffin now playing on tablet" />
+  <img src="/Vultr/images/knight-tablet-vertical.png" width="180" alt="Puffin tablet vertical view" />
+  <img src="/Vultr/images/playstore.png" width="180" alt="Puffin library screen" />
+  <img src="/Vultr/images/playstore-1.png" width="180" alt="Puffin book details screen" />
+  <img src="/Vultr/images/playstore-2.png" width="180" alt="Puffin now playing screen" />
+  <img src="/Vultr/images/playstore-3.png" width="180" alt="Puffin history screen" />
+  <img src="/Vultr/images/playstore-4.png" width="180" alt="Puffin settings screen" />
+  <img src="/Vultr/images/playstore-5.png" width="180" alt="Puffin onboarding screen" />
+  <img src="/Vultr/images/playstore-6.png" width="180" alt="Puffin audiobook controls" />
 </p>
 
 ---
@@ -47,9 +47,9 @@ See [docs/development.md](docs/development.md) for full environment setup instru
 
 ## ⚖️ License & Attribution
 
-Raven is an independent fork of the open-source [Voice](https://github.com/PaulWoitaschek/Voice) audiobook player (© Paul Woitaschek and contributors, GPLv3). It is not affiliated with or endorsed by the Voice project. See [ATTRIBUTION.md](ATTRIBUTION.md) for details.
+Puffin is an independent fork of the open-source [Voice](https://github.com/PaulWoitaschek/Voice) audiobook player (© Paul Woitaschek and contributors, GPLv3). It is not affiliated with or endorsed by the Voice project. See [ATTRIBUTION.md](ATTRIBUTION.md) for details.
 
-Raven is licensed under the [GNU GPLv3](LICENSE.md). By contributing, you agree to license your code under the same terms.
+Puffin is licensed under the [GNU GPLv3](LICENSE.md). By contributing, you agree to license your code under the same terms.
 
 
 ## 🔗 Links

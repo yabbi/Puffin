@@ -37,7 +37,7 @@
     <string name="pref_suggest_idea">Föreslå en idé</string>
     <string name="pref_use_grid">Använd rutnätslayout</string>
     <string name="pref_report_issue">Rapportera ett problem</string>
-    <string name="pref_help_translating">Hjälp med att översätta Raven</string>
+    <string name="pref_help_translating">Hjälp med att översätta Puffin</string>
     <string name="pref_get_support">Få support</string>
     <string name="pref_app_version">Appversion</string>
     <string name="popup_edit">Redigera</string>
@@ -56,7 +56,7 @@
         <item quantity="other">%d ljudfiler</item>
     </plurals>
     <string name="folder_type_book_example_header">Detta skulle leda till att följande böcker upptäcks</string>
-    <string name="folder_type_no_books">Raven kunde inte upptäcka några böcker. Finns det några ljudfiler?</string>
+    <string name="folder_type_no_books">Puffin kunde inte upptäcka några böcker. Finns det några ljudfiler?</string>
     <string name="folder_type_title">Hur är dina filer uppbyggda?</string>
     <string name="bookmark_just_now">Precis nu</string>
     <string name="voice_intro_first_book">Lägg till din ljudboksmapp så att du kan börja lyssna!</string>
@@ -95,18 +95,18 @@
     <string name="cover_search.author">Författare</string>
     <string name="storage_bug_button">Tillåta behörigheter</string>
     <string name="select_folder_subtitle">Vill du lägga till en enskild fil som en bok eller en mapp?</string>
-    <string name="onboarding.explanation.subtitle">Med Raven kan du lägga till böcker som enskilda filer eller organisera dem i mappar. Du väljer!</string>
+    <string name="onboarding.explanation.subtitle">Med Puffin kan du lägga till böcker som enskilda filer eller organisera dem i mappar. Du väljer!</string>
     <string name="onboarding.explanation.title">Ditt bibliotek, ditt sätt</string>
-    <string name="onboarding.completion.subtitle">Din första ljudbok är redo att spelas. Njut av din resa med Raven!</string>
+    <string name="onboarding.completion.subtitle">Din första ljudbok är redo att spelas. Njut av din resa med Puffin!</string>
     <string name="onboarding.completion.next_button">Börja lyssna</string>
-    <string name="storage_bug_subtitle">För vissa enheter saknar appen vissa nödvändiga behörigheter för att komma åt den externa lagringen. Den åtkomst är nödvändig för att Raven ska kunna läsa dina ljudböcker.</string>
+    <string name="storage_bug_subtitle">För vissa enheter saknar appen vissa nödvändiga behörigheter för att komma åt den externa lagringen. Den åtkomst är nödvändig för att Puffin ska kunna läsa dina ljudböcker.</string>
     <string name="storage_bug_title">Tillstånd krävs</string>
     <string name="cover_search_template_no_author">%s ljudboksomslag</string>
     <string name="select_folder_title_onboarding">Lägg till din första ljudbok</string>
     <string name="select_folder_title_default">Lägg till dina ljudböcker</string>
     <string name="select_folder_type_file">Fil</string>
     <string name="select_folder_type_folder">Mapp</string>
-    <string name="onboarding_welcome_title">Välkommen till Raven!</string>
+    <string name="onboarding_welcome_title">Välkommen till Puffin!</string>
     <string name="onboarding_welcome_subtitle">Din personliga ljudboksspelare i fickan. Låt oss komma igång.</string>
     <string name="onboarding.button_next">Nästa</string>
     <string name="onboarding.completion.title">Du är redo!</string>
@@ -116,7 +116,7 @@
     <string name="review.feedback.title">Vi är ledsna att höra det!</string>
     <string name="cover_search_template_with_author">%1$s av %2$s ljudboksomslag</string>
     <string name="folder_mode_author">Författarbokläge: Undermappar är författare, under-undermappar är böcker.</string>
-    <string name="review.request.title">Gillar du Raven?</string>
+    <string name="review.request.title">Gillar du Puffin?</string>
     <string name="review.request.content">Din feedback är viktig för oss! Om du har en stund, betygsätt oss och dela din upplevelse. Det hjälper oss att göra förbättringar och erbjuda en bättre lyssningsupplevelse.</string>
     <string name="review.feedback.content">Kan du berätta vad som gick fel? Vi uppskattar din feedback och den hjälper oss att förbättra din upplevelse.</string>
     <string name="review.feedback.button.yes">Skicka feedback</string>
@@ -136,7 +136,7 @@
     <string name="auto_sleep_timer.title">Automatisk insomningstimer</string>
     <string name="end_of_chapter">Slut på kapitlet</string>
     <string name="pref_audiobook_folders_explanation">Hantera mappar som skannas efter ljudböcker</string>
-    <string name="onboarding_analytics_consent_title">Hjälp till att förbättra Raven</string>
+    <string name="onboarding_analytics_consent_title">Hjälp till att förbättra Puffin</string>
     <string name="onboarding_analytics_consent_description">Tillåt oss att samla in anonym användningsdata för att kunna förbättra appen. Du kan ändra på inställningen senare.</string>
     <string name="onboarding_analytics_consent_button_enable">Fortsätt med analys</string>
     <string name="onboarding_analytics_consent_button_disable">Fortsätt utan analys</string>

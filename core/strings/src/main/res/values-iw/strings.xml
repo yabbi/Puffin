@@ -9,9 +9,9 @@
     <string name="more">עוד</string>
     <string name="pref_get_support">תמיכה</string>
     <string name="migration_hint_content">עקב שינויים בגרסאות חדשות יותר של אנדרואיד, יש צורך לבחור את תיקיית ספרי האודיו שלך באמצעות בורר המערכת.\n\nלחץ על הסמל למעלה כדי להציג את מיקומי הספרים הישנים שלך.</string>
-    <string name="storage_bug_subtitle">עבור מכשירים מסוימים, לאפליקציית מערכת חסרה את ההרשאה הנדרשת לגישה לאחסון החיצוני. גישה זו חיונית כדי ש-Raven יוכל לקרוא את ספרי האודיו שלך.</string>
+    <string name="storage_bug_subtitle">עבור מכשירים מסוימים, לאפליקציית מערכת חסרה את ההרשאה הנדרשת לגישה לאחסון החיצוני. גישה זו חיונית כדי ש-Puffin יוכל לקרוא את ספרי האודיו שלך.</string>
     <string name="onboarding.completion.next_button">התחל להאזין</string>
-    <string name="onboarding.explanation.subtitle">בעזרת Raven, תוכלו להוסיף ספרים כקבצים בודדים או לארגן אותם בתיקיות. בחרו!</string>
+    <string name="onboarding.explanation.subtitle">בעזרת Puffin, תוכלו להוסיף ספרים כקבצים בודדים או לארגן אותם בתיקיות. בחרו!</string>
     <string name="cover">עטיפה</string>
     <string name="play_pause">הפעל \\ השהה</string>
     <string name="pause">השהה</string>
@@ -44,7 +44,7 @@
     <string name="pref_suggest_idea">הצע רעיון</string>
     <string name="pref_use_grid">תשתמש בפריסת רשת</string>
     <string name="pref_report_issue">דווח על תקלה</string>
-    <string name="pref_help_translating">עזור לתרגם את Raven</string>
+    <string name="pref_help_translating">עזור לתרגם את Puffin</string>
     <string name="pref_app_version">גרסת יישום</string>
     <string name="popup_edit">ערוך</string>
     <string name="remove">מחק</string>
@@ -62,7 +62,7 @@
         <item quantity="two">%d קבצי שמע</item>
         <item quantity="other">%d קבצי שמע</item>
     </plurals>
-    <string name="folder_type_no_books">Raven לא זיהה ספרים. האם יש קבצי שמע?</string>
+    <string name="folder_type_no_books">Puffin לא זיהה ספרים. האם יש קבצי שמע?</string>
     <string name="folder_type_title">איך הקבצים שלך מסודרים?</string>
     <string name="bookmark_just_now">ממש עכשיו</string>
     <string name="migration_hint_confirm">מובן</string>
@@ -97,13 +97,13 @@
     <string name="select_folder_type_file">קובץ</string>
     <string name="select_folder_type_folder">תיקייה</string>
     <string name="select_folder_subtitle">האם ברצונך להוסיף קובץ בודד כספר או כתיקייה?</string>
-    <string name="onboarding_welcome_title">ברוכים הבאים ל-Raven!</string>
-    <string name="onboarding_welcome_subtitle">נגן ספרי הקולספרים האישי שלך בכיס. בואו נתאים את Raven אליכם.</string>
+    <string name="onboarding_welcome_title">ברוכים הבאים ל-Puffin!</string>
+    <string name="onboarding_welcome_subtitle">נגן ספרי הקולספרים האישי שלך בכיס. בואו נתאים את Puffin אליכם.</string>
     <string name="onboarding.button_next">הבא</string>
     <string name="onboarding.explanation.title">הספרייה שלך, בדרך שלך</string>
     <string name="onboarding.completion.title">הכל מוכן!</string>
-    <string name="onboarding.completion.subtitle">נגן הקולספר הראשון שלך מוכן להשמעה. תהנה מהמסע שלך עם Raven!</string>
-    <string name="review.request.title">נהנים מ-Raven?</string>
+    <string name="onboarding.completion.subtitle">נגן הקולספר הראשון שלך מוכן להשמעה. תהנה מהמסע שלך עם Puffin!</string>
+    <string name="review.request.title">נהנים מ-Puffin?</string>
     <string name="review.request.button.yes">דרג עכשיו</string>
     <string name="review.request.button.no">לא, תודה</string>
     <string name="review.feedback.title">אנחנו מצטערים לשמוע את זה!</string>
@@ -138,5 +138,5 @@
     <string name="auto_sleep_timer.end">בחר זמן סיום</string>
     <string name="playback.current_chapter">פרק נוכחי</string>
     <string name="end_of_chapter">סוף פרק</string>
-    <string name="onboarding_analytics_consent_title">עזרו לשפר את Raven</string>
+    <string name="onboarding_analytics_consent_title">עזרו לשפר את Puffin</string>
 </resources>

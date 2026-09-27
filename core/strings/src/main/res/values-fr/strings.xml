@@ -38,7 +38,7 @@
     <string name="pref_suggest_idea">Suggérer une idée</string>
     <string name="pref_use_grid">Utiliser la mise en page en grille</string>
     <string name="pref_report_issue">Signaler un problème</string>
-    <string name="pref_help_translating">Aidez à traduire Raven</string>
+    <string name="pref_help_translating">Aidez à traduire Puffin</string>
     <string name="pref_get_support">Demander de l\'aide</string>
     <string name="pref_app_version">Version de l\'application</string>
     <string name="popup_edit">Modifier</string>
@@ -58,7 +58,7 @@
         <item quantity="other">%d fichiers audio</item>
     </plurals>
     <string name="folder_type_book_example_header">Cela conduirait à la détection des livres suivants</string>
-    <string name="folder_type_no_books">Raven n\'a pu détecter aucun livre. Y a-t-il des fichiers audio ?</string>
+    <string name="folder_type_no_books">Puffin n\'a pu détecter aucun livre. Y a-t-il des fichiers audio ?</string>
     <string name="folder_type_title">Comment vos fichiers sont ils structurés ?</string>
     <string name="bookmark_just_now">À l\'instant</string>
     <string name="voice_intro_first_book">Ajoutons un dossier de livres audio pour commencer à les écouter !</string>
@@ -90,16 +90,16 @@
     <string name="media_session_recent">Récent</string>
     <string name="notification_sleep_timer_enable">Activer la minuterie de mise en veille</string>
     <string name="notification_sleep_timer_disable">Désactiver la minuterie de mise en veille</string>
-    <string name="onboarding_welcome_title">Bienvenue dans Raven !</string>
+    <string name="onboarding_welcome_title">Bienvenue dans Puffin !</string>
     <string name="sleep_timer.title">Bonne nuit ! 🌙</string>
     <string name="sleep_timer.button.increment">Plus long</string>
     <string name="folder_mode_author">Mode auteurs : chaque sous-dossier est un auteur, dont chaque sous-dossier est un livre.</string>
     <string name="generic_error_message">Quelque chose s\'est mal passé 😢</string>
     <string name="generic_error_retry">Réessayer</string>
-    <string name="storage_bug_subtitle">Sur certains appareils, il manque les permissions nécessaires à une application système pour accéder au stockage externe. Cet accès est essentiel pour que Raven puisse lire les livres audio.</string>
+    <string name="storage_bug_subtitle">Sur certains appareils, il manque les permissions nécessaires à une application système pour accéder au stockage externe. Cet accès est essentiel pour que Puffin puisse lire les livres audio.</string>
     <string name="storage_bug_button">Accorder la permission</string>
     <string name="onboarding.explanation.title">Votre bibliothèque sur mesure</string>
-    <string name="review.request.title">Vous aimez Raven ?</string>
+    <string name="review.request.title">Vous aimez Puffin ?</string>
     <string name="review.request.button.yes">Évaluer</string>
     <string name="review.request.button.no">Non merci</string>
     <string name="review.feedback.title">Désolé de l\'apprendre !</string>
@@ -113,12 +113,12 @@
     <string name="cover_search_template_no_author">%s couverture livre audio</string>
     <string name="cover_search_template_with_author">%1$s par %2$s couverture livre audio</string>
     <string name="onboarding.button_next">Suivant</string>
-    <string name="onboarding.explanation.subtitle">Avec Raven, vous pouvez ajouter des livres comme des fichiers individuels, ou les organiser en dossier. Comme vous préférez !</string>
+    <string name="onboarding.explanation.subtitle">Avec Puffin, vous pouvez ajouter des livres comme des fichiers individuels, ou les organiser en dossier. Comme vous préférez !</string>
     <string name="onboarding.completion.title">Tout est en ordre !</string>
     <string name="review.feedback.button.yes">Donnez votre avis</string>
-    <string name="onboarding.completion.subtitle">Votre premier livre audio est prêt à être lu. Profitez de votre voyage avec Raven !</string>
+    <string name="onboarding.completion.subtitle">Votre premier livre audio est prêt à être lu. Profitez de votre voyage avec Puffin !</string>
     <string name="onboarding.completion.next_button">Commencer à écouter</string>
-    <string name="review.request.content">Vos retours comptent pour nous ! Si vous avez un peu de temps, partagez votre expérience. Cela nous aide à améliorer Raven et à vous offrir un plus grand confort d\'écoute.</string>
+    <string name="review.request.content">Vos retours comptent pour nous ! Si vous avez un peu de temps, partagez votre expérience. Cela nous aide à améliorer Puffin et à vous offrir un plus grand confort d\'écoute.</string>
     <string name="review.feedback.button.no">Annuler</string>
     <string name="onboarding_welcome_subtitle">Votre lecteur de livres audio personnel. Configurons votre application.</string>
     <string name="play">Lecture</string>
@@ -138,6 +138,6 @@
     <string name="auto_sleep_timer.end">Heure de fin</string>
     <string name="playback.current_chapter">Chapitre en cours</string>
     <string name="end_of_chapter">Fin du chapitre</string>
-    <string name="onboarding_analytics_consent_title">Aidez-nous à améliorer Raven</string>
+    <string name="onboarding_analytics_consent_title">Aidez-nous à améliorer Puffin</string>
     <string name="onboarding_analytics_consent_description">Autorisez-nous à collecter des données d\'utilisation anonymes afin d\'améliorer l\'application. Vous pouvez modifier ce paramètre ultérieurement dans les réglages.</string>
 </resources>

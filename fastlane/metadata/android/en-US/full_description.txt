@@ -1,12 +1,12 @@
-Meet Raven — a calm, clutter-free home for your audiobooks.
+Meet Puffin — a calm, clutter-free home for your audiobooks.
 
-Raven is a minimalist offline audiobook player for the books you already own. No accounts, no subscriptions, no ads, and no tracking. Just point it at your audio folder and press play.
+Puffin is a minimalist offline audiobook player for the books you already own. No accounts, no subscriptions, no ads, and no tracking. Just point it at your audio folder and press play.
 
-If you keep your own DRM-free audiobooks (M4B, MP3, M4A, OGG, OGA, OPUS and more), Raven turns them into a tidy, beautiful library. Add your main folder and each subfolder becomes a book automatically — no manual tagging, no cloud, no fuss.
+If you keep your own DRM-free audiobooks (M4B, MP3, M4A, OGG, OGA, OPUS and more), Puffin turns them into a tidy, beautiful library. Add your main folder and each subfolder becomes a book automatically — no manual tagging, no cloud, no fuss.
 
 WHY YOU'LL LIKE IT
 • 100% offline & ad-free — listen anywhere, no connection required, ever.
-• Private by design — Raven collects no personal data and asks for only the permissions it needs to read your files.
+• Private by design — Puffin collects no personal data and asks for only the permissions it needs to read your files.
 • Free & open source (GPLv3) — anyone can inspect exactly what it does.
 • A clean, modern interface with full light and dark themes.
 
@@ -25,7 +25,7 @@ YOUR LIBRARY, YOUR WAY
 • Manage cover art — use embedded artwork, pick a local image, or search online for a missing cover.
 • Control playback from the home-screen widget and media notification.
 
-Raven is completely free and open source under the GNU GPLv3 license. We respect your privacy and your attention — the app exists to get out of your way so you can enjoy the story.
+Puffin is completely free and open source under the GNU GPLv3 license. We respect your privacy and your attention — the app exists to get out of your way so you can enjoy the story.
 
 Turn your phone into a quiet little audiobook sanctuary today.
 

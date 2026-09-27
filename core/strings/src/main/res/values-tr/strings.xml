@@ -71,10 +71,10 @@
     <string name="pref_suggest_idea">Fikir öner</string>
     <string name="pref_report_issue">Sorun bildir</string>
     <string name="folder_type_title">Dosyalarınız nasıl yapılandırılıyor?</string>
-    <string name="pref_help_translating">Raven\'u çevirmeye yardım et</string>
+    <string name="pref_help_translating">Puffin\'u çevirmeye yardım et</string>
     <string name="close">Kapat</string>
     <string name="delete">Sil</string>
-    <string name="folder_type_no_books">Raven herhangi bir kitap algılayamadı. Hiç ses dosyası var mı?</string>
+    <string name="folder_type_no_books">Puffin herhangi bir kitap algılayamadı. Hiç ses dosyası var mı?</string>
     <string name="migration_detail_title">Eski kitap konumları</string>
     <string name="migration_detail_content_position_current_file_title">Geçerli dosya</string>
     <string name="voice_intro_first_book">Dinlemeye başlayabilmeniz için sesli kitap dizininizi ekleyelim!</string>
@@ -93,8 +93,8 @@
     <string name="sleep_timer.title">Tatlı rüyalar! 🌙</string>
     <string name="onboarding.button_next">Sonraki</string>
     <string name="select_folder_type_folder">Klasör</string>
-    <string name="onboarding.completion.subtitle">İlk sesli kitabın dinlemen için hazır. Raven ile yolculuğunda iyi eğlenceler!</string>
-    <string name="review.request.title">Raven\'den memnun musun?</string>
+    <string name="onboarding.completion.subtitle">İlk sesli kitabın dinlemen için hazır. Puffin ile yolculuğunda iyi eğlenceler!</string>
+    <string name="review.request.title">Puffin\'den memnun musun?</string>
     <string name="pause">Beklet</string>
     <string name="generic_error_retry">Tekrar dene</string>
     <string name="select_folder_title_default">Sesli kitabını (kitaplarını) ekle</string>
@@ -107,7 +107,7 @@
     <string name="cover_search.author">Yazar</string>
     <string name="storage_bug_button">İzin ver</string>
     <string name="select_folder_type_file">Dosya</string>
-    <string name="onboarding_welcome_title">Raven\'e hoş geldiniz!</string>
+    <string name="onboarding_welcome_title">Puffin\'e hoş geldiniz!</string>
     <plurals name="minutes">
         <item quantity="one">%d dakika</item>
         <item quantity="other">%d dakika</item>
@@ -121,10 +121,10 @@
     <string name="sleep_timer.button.decrement">Daha kısa</string>
     <string name="generic_error_message">Bir şeyler ters gitti😢</string>
     <string name="play">Yürüt</string>
-    <string name="onboarding.explanation.subtitle">Raven\'u kullanarak kitapları tek tek dosyalar halinde ekleyebilir veya klasörler halinde düzenleyebilirsiniz. Sen seç!</string>
+    <string name="onboarding.explanation.subtitle">Puffin\'u kullanarak kitapları tek tek dosyalar halinde ekleyebilir veya klasörler halinde düzenleyebilirsiniz. Sen seç!</string>
     <string name="onboarding.completion.next_button">Dinlemeye başla</string>
     <string name="review.request.content">Geri bildiriminiz bizim için önemli! Vaktiniz varsa bizi değerlendirin ve deneyiminizi paylaşın. Bu bizim iyileştirmeler yapmamıza ve daha iyi bir dinleme deneyimi sunmamıza yardımcı olur.</string>
-    <string name="storage_bug_subtitle">Belirli aygıtlarda, bir sistem uygulamasının harici depolamaya erişim için gerekli izni yoktur. Bu erişim, Raven\'un sesli kitaplarınızı okuyabilmesi için gereklidir.</string>
+    <string name="storage_bug_subtitle">Belirli aygıtlarda, bir sistem uygulamasının harici depolamaya erişim için gerekli izni yoktur. Bu erişim, Puffin\'un sesli kitaplarınızı okuyabilmesi için gereklidir.</string>
     <string name="cover_search_template_no_author">%s Sesli kitap kapağı</string>
     <string name="folder_mode_author">Yazar-Kitap Modu: Alt klasörler yazarlar, onların alt klasörleri kitaplardır.</string>
     <string name="cover_search_template_with_author">%2$s taneden %1$s tane sesli kitap kapağı</string>
@@ -135,7 +135,7 @@
     <string name="auto_sleep_timer.end">Bitiş zamanı</string>
     <string name="playback.current_chapter">Şu anki bölüm</string>
     <string name="end_of_chapter">Bölüm Sonu</string>
-    <string name="onboarding_analytics_consent_title">Raven\'u iyileştirmeye katkı sağlayın</string>
+    <string name="onboarding_analytics_consent_title">Puffin\'u iyileştirmeye katkı sağlayın</string>
     <string name="onboarding_analytics_consent_description">Uygulamayı iyileştirmemize yardımcı olması için anonim kullanım verileri toplamamıza izin verin. Bunu daha sonra ayarlardan değiştirebilirsiniz.</string>
     <string name="onboarding_analytics_consent_button_enable">Analitiğe izin ver</string>
     <string name="onboarding_analytics_consent_button_disable">Analitiksiz devam et</string>

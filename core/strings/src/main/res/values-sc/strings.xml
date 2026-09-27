@@ -4,11 +4,11 @@
     <string name="pref_suggest_idea">Cussìgia un\'idea</string>
     <string name="onboarding_welcome_subtitle">Su leghidore de butzaca de audiolibros personale tuo. Preparamus·nos.</string>
     <string name="media_session_root">Totu sos audiolibros</string>
-    <string name="storage_bug_subtitle">Pro unos cantos dispositivos, un\'aplicatzione de sistema non tenet s\'autorizatzione netzessària pro atzèdere a sa memòria esterna. Bisòngiat a tènnere custu atzessu pro chi Raven potzat lèghere sos audiolibros tuos.</string>
+    <string name="storage_bug_subtitle">Pro unos cantos dispositivos, un\'aplicatzione de sistema non tenet s\'autorizatzione netzessària pro atzèdere a sa memòria esterna. Bisòngiat a tènnere custu atzessu pro chi Puffin potzat lèghere sos audiolibros tuos.</string>
     <string name="select_folder_type_folder">Cartella</string>
     <string name="select_folder_type_file">Documentu</string>
-    <string name="onboarding_welcome_title">Bene bènnidu a Raven!</string>
-    <string name="onboarding.explanation.subtitle">Cun Raven, podes agiùnghere libros comente documentos individuales o los organizare in cartellas. Issèbera tue!</string>
+    <string name="onboarding_welcome_title">Bene bènnidu a Puffin!</string>
+    <string name="onboarding.explanation.subtitle">Cun Puffin, podes agiùnghere libros comente documentos individuales o los organizare in cartellas. Issèbera tue!</string>
     <string name="review.request.button.yes">Vota como</string>
     <string name="review.feedback.content">Nos podes nàrrere ite b\'at àpidu de isballiadu? Apretziamus su parre tuo e nos agiudat a megiorare s\'esperièntzia tua.</string>
     <string name="review.request.content">Su parre tuo nos importat! Si tenes unu momentu, dae·nos unu votu e cumpartzi s\'esperièntzia tua. Noa agiudat a megiorare e a dare un\'esperièntzia de ascurtu prus bona.</string>
@@ -82,7 +82,7 @@
     <string name="onboarding.button_next">Imbeniente</string>
     <string name="onboarding.completion.title">Ses prontu!</string>
     <string name="onboarding.completion.next_button">Incumintza a ascurtare</string>
-    <string name="review.request.title">Ti ses ispassiende cun Raven?</string>
+    <string name="review.request.title">Ti ses ispassiende cun Puffin?</string>
     <string name="review.request.button.no">Nono, gràtzias</string>
     <string name="review.feedback.button.yes">Imbia su parre tuo</string>
     <string name="review.feedback.button.no">Annulla</string>
@@ -107,7 +107,7 @@
     <string name="delete_book_dialog_deletion_confirmation">Iscantzella sos documentos meos</string>
     <string name="onboarding.explanation.title">Sa biblioteca tua, sa manera tua</string>
     <string name="pref_auto_rewind_title">Torra in segus in automàticu</string>
-    <string name="pref_help_translating">Agiuda a bortare Raven</string>
+    <string name="pref_help_translating">Agiuda a bortare Puffin</string>
     <string name="book_header_completed">Acabbadu</string>
     <string name="folder_mode_root">Modalidade libru de livellu superiore: sas suta-cartellas sunt libros</string>
     <string name="migration_hint_content">Pro more de modìficas in sas versiones noas de Android, depes seletzionare sa cartella de audiolibros tua impreende su seletzionadore de sistema.\n\nIncarca in s\'icona inoghe in subra pro bìdere sas positziones betzas de sos libros tuos.</string>
@@ -116,8 +116,8 @@
     <string name="folder_mode_author">Modalidade autore-libru: Sas sutacartella sunt autores, sas suta-sutacartellas sunt libros.</string>
     <string name="migration_detail_content_position">Positzione</string>
     <string name="folder_type_book_example_header">Custu diat causare su rilevamentu de sos libros chi sighint</string>
-    <string name="folder_type_no_books">Raven no at pòdidu rilevare perunu libru. Bi sunt documentos àudio?</string>
-    <string name="onboarding.completion.subtitle">Su primu audiolibru tuo est prontu pro sa riprodutzione. Gosa·ti su biàgiu tuo cun Raven!</string>
+    <string name="folder_type_no_books">Puffin no at pòdidu rilevare perunu libru. Bi sunt documentos àudio?</string>
+    <string name="onboarding.completion.subtitle">Su primu audiolibru tuo est prontu pro sa riprodutzione. Gosa·ti su biàgiu tuo cun Puffin!</string>
     <string name="delete_book_dialog_content">Custu at a iscantzellare sos documentos in su dispositivu tuo.</string>
     <string name="migration_detail_content_bookmarks">Sinnalibros</string>
     <string name="migration_delete_dialog_content">A pustis de àere iscantzelladu sas positziones betzas, no as a pòdere recuperare sas positziones de riprodutzione betzas tuas.</string>

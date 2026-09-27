@@ -59,7 +59,7 @@
     <string name="add">Προσθήκη</string>
     <string name="delete">Διαγραφή</string>
     <string name="folder_mode_root">Αρχικός φάκελος βιβλίων. Ένας υποφάκελος = ένα βιβλίο.</string>
-    <string name="folder_type_no_books">Το Raven δεν μπόρεσε να εντοπίσει βιβλία. Υπάρχουν αρχεία ήχου;</string>
+    <string name="folder_type_no_books">Το Puffin δεν μπόρεσε να εντοπίσει βιβλία. Υπάρχουν αρχεία ήχου;</string>
     <string name="migration_detail_content_name">Όνομα</string>
     <string name="migration_detail_content_bookmarks">Σελιδοδείκτες</string>
     <string name="migration_detail_content_position_current_file_title">Τρέχον αρχείο</string>
@@ -84,7 +84,7 @@
     <string name="migration_detail_content_position_current_file_position">Θέση στο αρχείο</string>
     <string name="migration_delete_dialog_content">Μόλις διαγράψετε τις παλιές θέσεις, δεν θα μπορείτε να ανακτήσετε τα παλιά σημεία αναπαραγωγής.</string>
     <string name="battery_optimization_action">Αλλαγή</string>
-    <string name="pref_help_translating">Βοήθεια στη μετάφραση του Raven</string>
+    <string name="pref_help_translating">Βοήθεια στη μετάφραση του Puffin</string>
     <string name="pref_suggest_idea">Προτείνετε μια ιδέα</string>
     <string name="media_session_root">Όλα τα ηχητικά βιβλία</string>
     <string name="migration_hint_title">Πρόσβαση σε παλιές θέσεις βιβλίων</string>

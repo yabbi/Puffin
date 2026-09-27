@@ -41,7 +41,7 @@
     <string name="pref_suggest_idea">Sugerir uma ideia</string>
     <string name="pref_use_grid">Utilizar a disposição da grelha</string>
     <string name="pref_report_issue">Reportar um problema</string>
-    <string name="pref_help_translating">Ajuda traduzindo Raven</string>
+    <string name="pref_help_translating">Ajuda traduzindo Puffin</string>
     <string name="pref_app_version">Versão</string>
     <string name="play_current">Reproduzir atual</string>
     <string name="book_header_not_started">Não iniciado ainda</string>
@@ -63,7 +63,7 @@
     <string name="migration_detail_content_added_at">Adicionado em</string>
     <string name="search_hint">O que procura?</string>
     <string name="notification_sleep_timer_disable">Desativar desligamento automático</string>
-    <string name="folder_type_no_books">Raven não conseguiu encontrar nenhum livro. O ficheiro está no formato certo?</string>
+    <string name="folder_type_no_books">Puffin não conseguiu encontrar nenhum livro. O ficheiro está no formato certo?</string>
     <string name="folder_type_title">Como os seus ficheiros estão organizados?</string>
     <string name="migration_hint_title">Aceder posições de livros antigos</string>
     <string name="delete_book_dialog_content">Isso deletará os ficheiros no seu aparelho.</string>

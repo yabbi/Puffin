@@ -40,7 +40,7 @@
     <string name="pref_suggest_idea">Soovita uut ideed</string>
     <string name="pref_use_grid">Kasuta paigutust ruudustikuna</string>
     <string name="pref_report_issue">Teata veast</string>
-    <string name="pref_help_translating">Aita tõlkida rakendust Raven</string>
+    <string name="pref_help_translating">Aita tõlkida rakendust Puffin</string>
     <string name="pref_app_version">Rakenduse versioon</string>
     <string name="popup_edit">Muuda</string>
     <string name="remove">Eemalda</string>
@@ -55,7 +55,7 @@
     <string name="action_settings">Eelistused</string>
     <string name="pref_theme_dark">Tume kujundus</string>
     <string name="add">Lisa</string>
-    <string name="folder_type_no_books">Raven ei suutnud tuvastada ühtegi heliraamatut. Kas nutiseadmes üldse on helifaile?</string>
+    <string name="folder_type_no_books">Puffin ei suutnud tuvastada ühtegi heliraamatut. Kas nutiseadmes üldse on helifaile?</string>
     <string name="voice_intro_first_book">Lisame nüüd üheskoos heliraamatute kausta ja sa saad alustada kuulamisega!</string>
     <string name="folder_mode_root">Kahetasemeline raamatuvaade: alamkaustad on raamatud</string>
     <string name="folder_mode_single">Ühetasemeline raamatuvaade: iga kaust on raamat.</string>
@@ -67,9 +67,9 @@
     <string name="folder_type_title">Kuidas on sinu heliraamatute failid struktureeritud?</string>
     <string name="bookmark_just_now">Just nüüd</string>
     <string name="folder_type_book_example_header">Sellega tuvastatakse järgnevad raamatud</string>
-    <string name="onboarding_welcome_title">Tere tulemast heliraamatuesitajasse Raven!</string>
-    <string name="onboarding.explanation.subtitle">Raven\'i puhul saad sa heliraamatuid lisada üksikute failidena või koondada neid kaustadesse. Tee nii, nagu soovid!</string>
-    <string name="review.request.title">Kas sulle meeldib Raven?</string>
+    <string name="onboarding_welcome_title">Tere tulemast heliraamatuesitajasse Puffin!</string>
+    <string name="onboarding.explanation.subtitle">Puffin\'i puhul saad sa heliraamatuid lisada üksikute failidena või koondada neid kaustadesse. Tee nii, nagu soovid!</string>
+    <string name="review.request.title">Kas sulle meeldib Puffin?</string>
     <string name="media_session_root">Kõik heliraamatud</string>
     <string name="media_session_recent">Viimatine</string>
     <string name="notification_sleep_timer_enable">Lülita unetaimer sisse</string>
@@ -84,8 +84,8 @@
     <string name="onboarding.explanation.title">Sinu raamatukogu, just nii nagu soovid</string>
     <string name="onboarding.completion.title">Kõik on tehtud!</string>
     <string name="onboarding.completion.next_button">Alusta kuulamist</string>
-    <string name="storage_bug_subtitle">Mõnedes seadmetes puudub ühel süsteemirakendusel vajalik õigus lugeda andmeid väliselt andmekandjalt. See ligipääs on vajalik, et Raven saaks lugeda sinu heliraamatute faile.</string>
-    <string name="onboarding.completion.subtitle">Sinu esimene heliraamat on kuulamiseks valmis. Naudi järgnevat teekonda Raven\'iga!</string>
+    <string name="storage_bug_subtitle">Mõnedes seadmetes puudub ühel süsteemirakendusel vajalik õigus lugeda andmeid väliselt andmekandjalt. See ligipääs on vajalik, et Puffin saaks lugeda sinu heliraamatute faile.</string>
+    <string name="onboarding.completion.subtitle">Sinu esimene heliraamat on kuulamiseks valmis. Naudi järgnevat teekonda Puffin\'iga!</string>
     <string name="generic_error_message">Midagi läks valesti 😢</string>
     <string name="generic_error_retry">Proovi uuesti</string>
     <string name="notification_sleep_timer_disable">Lülita unetaimer välja</string>
@@ -135,7 +135,7 @@
     <string name="playback.current_chapter">Praegune peatükk</string>
     <string name="pref_faq">KKK</string>
     <string name="end_of_chapter">Peatüki lõpp</string>
-    <string name="onboarding_analytics_consent_title">Aita muuta rakendust Raven paremaks</string>
+    <string name="onboarding_analytics_consent_title">Aita muuta rakendust Puffin paremaks</string>
     <string name="onboarding_analytics_consent_description">Parandamaks rakendust luba meil koguda anonüümseid andmeid tema kasutuse kohta. Sa saad seda seadistustest alati hiljem muuta.</string>
     <string name="onboarding_analytics_consent_button_enable">Jätka nii, et analüütiline andmekogumine on lubatud</string>
     <string name="onboarding_analytics_consent_button_disable">Jätka nii, et analüütiline andmekogumine pole lubatud</string>

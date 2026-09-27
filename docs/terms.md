@@ -7,23 +7,23 @@ permalink: /terms/
 
 **Last updated: June 17, 2026**
 
-Raven Audiobook Player ("Raven") is free, open-source software provided by Emerald Realm. By installing or using Raven you agree to these terms.
+Puffin Audiobook Player ("Puffin") is free, open-source software provided by Emerald Realm. By installing or using Puffin you agree to these terms.
 
 ## License
 
-Raven is licensed under the **GNU General Public License, version 3 (GPLv3)**. You are free to use, study, share, and modify the app under the terms of that license. The full license text is included with the source code at <https://github.com/Emerald-Realm/Vultr>.
+Puffin is licensed under the **GNU General Public License, version 3 (GPLv3)**. You are free to use, study, share, and modify the app under the terms of that license. The full license text is included with the source code at <https://github.com/Emerald-Realm/Vultr>.
 
 ## No warranty
 
-Raven is provided **"as is", without warranty of any kind**, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. To the maximum extent permitted by law, Emerald Realm shall not be liable for any claim, damages, data loss, or other liability arising from the use of the app. This mirrors the disclaimer in the GPLv3.
+Puffin is provided **"as is", without warranty of any kind**, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. To the maximum extent permitted by law, Emerald Realm shall not be liable for any claim, damages, data loss, or other liability arising from the use of the app. This mirrors the disclaimer in the GPLv3.
 
 ## Your content
 
-Raven plays audiobook files that you supply from your own device. You are responsible for ensuring you have the right to use those files. Raven does not provide, sell, or stream any audiobook content.
+Puffin plays audiobook files that you supply from your own device. You are responsible for ensuring you have the right to use those files. Puffin does not provide, sell, or stream any audiobook content.
 
 ## Acceptable use
 
-Use Raven lawfully. Do not use it to infringe copyright or other rights.
+Use Puffin lawfully. Do not use it to infringe copyright or other rights.
 
 ## Changes
 

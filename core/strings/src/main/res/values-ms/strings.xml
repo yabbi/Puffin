@@ -35,7 +35,7 @@
     <string name="bookmark_just_now">Baharu tadi</string>
     <string name="book_header_current">Sekarang</string>
     <string name="more">Lain-lain</string>
-    <string name="pref_help_translating">Bantu menterjemah Raven</string>
+    <string name="pref_help_translating">Bantu menterjemah Puffin</string>
     <string name="pref_get_support">Dapatkan bantuan</string>
     <string name="popup_edit">Sunting</string>
     <string name="delete">Padam</string>
@@ -66,5 +66,5 @@
     <plurals name="folder_type_file_count">
         <item quantity="other">%d fail audio</item>
     </plurals>
-    <string name="folder_type_no_books">Raven tidak dapat mengesan mana-mana buku. Adakah di sana ada sebarang fail audio?</string>
+    <string name="folder_type_no_books">Puffin tidak dapat mengesan mana-mana buku. Adakah di sana ada sebarang fail audio?</string>
 </resources>

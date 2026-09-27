@@ -97,11 +97,11 @@
     <string name="select_folder_type_file">Bestand</string>
     <string name="select_folder_title_default">Voeg Luisterboek(en) toe</string>
     <string name="folder_mode_author">Auteur-boek mode: Subfolders zijn auteurs, sub-subfolders bevatten boeken.</string>
-    <string name="storage_bug_subtitle">Voor sommige toestellen mist een systeem applicatie toegang tot de externe opslag. Deze toegang is essentieel voor Raven om de je luisterboeken te kunnen lezen.</string>
+    <string name="storage_bug_subtitle">Voor sommige toestellen mist een systeem applicatie toegang tot de externe opslag. Deze toegang is essentieel voor Puffin om de je luisterboeken te kunnen lezen.</string>
     <string name="storage_bug_title">Toegang vereist</string>
     <string name="storage_bug_button">Toegang geven</string>
     <string name="select_folder_title_onboarding">Voeg je eerste luisterboek toe</string>
-    <string name="review.request.title">Tevreden met Raven?</string>
+    <string name="review.request.title">Tevreden met Puffin?</string>
     <string name="review.request.button.yes">Beoordeeld Nu</string>
     <string name="review.request.button.no">Nee, bedankt</string>
     <string name="review.feedback.title">Het spijt ons dit te horen!</string>
@@ -115,15 +115,15 @@
         <item quantity="other">%d minuten</item>
     </plurals>
     <string name="cover_search.author">Auteur</string>
-    <string name="onboarding_welcome_title">Welkom bij Raven!</string>
+    <string name="onboarding_welcome_title">Welkom bij Puffin!</string>
     <string name="onboarding.button_next">Volgende</string>
     <string name="select_folder_type_folder">Map</string>
-    <string name="onboarding.explanation.subtitle">Met Raven kan je individuele boeken toevoegen of ze organiseren in folders. Jij kiest!</string>
+    <string name="onboarding.explanation.subtitle">Met Puffin kan je individuele boeken toevoegen of ze organiseren in folders. Jij kiest!</string>
     <string name="onboarding.explanation.title">Jouw bibliotheek, jouw manier</string>
     <string name="onboarding.completion.next_button">Begin te luisteren</string>
     <string name="cover_search.icon_recent">Recente zoekopdracht</string>
     <string name="select_folder_subtitle">Wil je een enkel bestand toevoegen als een boek of een folder?</string>
-    <string name="onboarding.completion.subtitle">Je eerste luisterboek is klaar om af te spelen. Geniet van je ervaring met Raven!</string>
+    <string name="onboarding.completion.subtitle">Je eerste luisterboek is klaar om af te spelen. Geniet van je ervaring met Puffin!</string>
     <string name="review.request.content">Je menig is van belang voor ons. Neem even de tijd, beoordeeld ons en deel je ervaring. Dit helpt ons verbeteringen aan te brengen en een betere ervaring aan te bieden.</string>
     <string name="onboarding.completion.title">Je bent helemaal klaar!</string>
     <string name="review.feedback.button.yes">Feedback verzenden</string>

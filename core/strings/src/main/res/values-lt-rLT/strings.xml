@@ -38,7 +38,7 @@
     <string name="pref_suggest_idea">Pasiūlyti idėją</string>
     <string name="pref_use_grid">Naudoti tinklelio išdėstymą</string>
     <string name="pref_report_issue">Pranešti apie problemą</string>
-    <string name="pref_help_translating">Padėkite verčiant „Raven“</string>
+    <string name="pref_help_translating">Padėkite verčiant „Puffin“</string>
     <string name="pref_get_support">Gauti palaikymą</string>
     <string name="pref_app_version">Programėlės versija</string>
     <string name="popup_edit">Redaguoti</string>
@@ -59,7 +59,7 @@
         <item quantity="other">%d garsinių failų</item>
     </plurals>
     <string name="folder_type_book_example_header">Tai leistų aptikti šias knygas</string>
-    <string name="folder_type_no_books">„Raven“ nepavyko aptikti jokių knygų. Ar viduje yra garsinių failų?</string>
+    <string name="folder_type_no_books">„Puffin“ nepavyko aptikti jokių knygų. Ar viduje yra garsinių failų?</string>
     <string name="folder_type_title">Kokia jūsų failų struktūra?</string>
     <string name="bookmark_just_now">Ką tik</string>
     <string name="voice_intro_first_book">Jei norite pradėti klausytis, pridėkite garsinių knygų aplanką!</string>

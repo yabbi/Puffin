@@ -3,9 +3,9 @@ title: About
 permalink: /about/
 ---
 
-# About Raven
+# About Puffin
 
-Raven is a simple, intuitive audiobook player built around a design philosophy of minimalism and reliability. The goal is an app that gets out of your way so you can focus on the story.
+Puffin is a simple, intuitive audiobook player built around a design philosophy of minimalism and reliability. The goal is an app that gets out of your way so you can focus on the story.
 
 Key characteristics:
 
@@ -14,6 +14,6 @@ Key characteristics:
 - **Privacy** — fully offline, no accounts, no ads, and no tracking.
 - **Open source** — free software under the GNU GPLv3.
 
-Raven is an independent fork of the open-source [Voice](https://github.com/PaulWoitaschek/Voice) project and is not affiliated with or endorsed by it.
+Puffin is an independent fork of the open-source [Voice](https://github.com/PaulWoitaschek/Voice) project and is not affiliated with or endorsed by it.
 
 Source, issues and contributions: <https://github.com/Emerald-Realm/Vultr>.
