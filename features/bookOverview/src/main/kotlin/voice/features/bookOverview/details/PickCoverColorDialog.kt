@@ -5,8 +5,11 @@ import android.graphics.BitmapFactory
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.calculateCentroid
+import androidx.compose.foundation.gestures.calculatePan
+import androidx.compose.foundation.gestures.calculateZoom
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,13 +33,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.PointerInputScope
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.Dispatchers
@@ -47,6 +55,7 @@ import voice.core.ui.theme.rememberCoverAccent
 import java.io.File
 
 private const val MAX_DECODE_SIZE = 1024
+private const val MAX_ZOOM = 6f
 
 @Composable
 internal fun PickCoverColorDialog(
@@ -71,7 +80,7 @@ internal fun PickCoverColorDialog(
     text = {
       Column {
         Text(
-          text = "Touch the cover to pick the color for buttons and progress.",
+          text = "Touch the cover to pick the color for buttons and progress. Pinch to zoom.",
           fontSize = 14.sp,
           color = RavenTheme.colors.subTitle,
         )
@@ -140,35 +149,80 @@ private fun ColorPickingCover(
   onPick: (Offset) -> Unit,
 ) {
   val imageBitmap = remember(bitmap) { bitmap.asImageBitmap() }
+  var scale by remember(bitmap) { mutableStateOf(1f) }
+  var offset by remember(bitmap) { mutableStateOf(Offset.Zero) }
   Box(
     modifier = Modifier
       .fillMaxWidth()
       .aspectRatio(bitmap.width.toFloat() / bitmap.height.toFloat())
+      .clipToBounds()
       .pointerInput(bitmap) {
-        detectTapGestures { position -> onPick(position.toFraction(size.width, size.height)) }
-      }
-      .pointerInput(bitmap) {
-        detectDragGestures { change, _ ->
-          change.consume()
-          onPick(change.position.toFraction(size.width, size.height))
-        }
+        detectPickAndZoomGestures(
+          onPick = { position -> onPick(((position - offset) / scale).toFraction(size.width, size.height)) },
+          onTransform = { centroid, pan, zoom ->
+            val newScale = (scale * zoom).coerceIn(1f, MAX_ZOOM)
+            val zoomed = centroid - (centroid - offset) * (newScale / scale) + pan
+            scale = newScale
+            offset = zoomed.clampToCover(size, newScale)
+          },
+        )
       },
   ) {
     Image(
       bitmap = imageBitmap,
       contentDescription = "Cover",
-      modifier = Modifier.fillMaxWidth(),
+      modifier = Modifier
+        .fillMaxWidth()
+        .graphicsLayer {
+          transformOrigin = TransformOrigin(0f, 0f)
+          scaleX = scale
+          scaleY = scale
+          translationX = offset.x
+          translationY = offset.y
+        },
       contentScale = ContentScale.FillBounds,
     )
     if (marker != null) {
       Canvas(Modifier.matchParentSize()) {
-        val center = Offset(marker.x * size.width, marker.y * size.height)
+        val center = offset + Offset(marker.x * size.width, marker.y * size.height) * scale
         drawCircle(Color.Black, radius = 14.dp.toPx(), center = center, style = Stroke(3.dp.toPx()))
         drawCircle(Color.White, radius = 12.dp.toPx(), center = center, style = Stroke(2.dp.toPx()))
       }
     }
   }
 }
+
+// One finger picks a color, two fingers zoom and pan. Once a gesture has zoomed,
+// the remaining finger must not pick so lifting one finger doesn't move the marker.
+private suspend fun PointerInputScope.detectPickAndZoomGestures(
+  onPick: (Offset) -> Unit,
+  onTransform: (centroid: Offset, pan: Offset, zoom: Float) -> Unit,
+) {
+  awaitEachGesture {
+    var transforming = false
+    awaitFirstDown()
+    do {
+      val event = awaitPointerEvent()
+      val pressed = event.changes.filter { it.pressed }
+      when {
+        pressed.size >= 2 -> {
+          transforming = true
+          onTransform(event.calculateCentroid(), event.calculatePan(), event.calculateZoom())
+        }
+        pressed.size == 1 && !transforming -> onPick(pressed.single().position)
+      }
+      event.changes.forEach { it.consume() }
+    } while (event.changes.any { it.pressed })
+  }
+}
+
+private fun Offset.clampToCover(
+  size: IntSize,
+  scale: Float,
+) = Offset(
+  x.coerceIn(size.width * (1f - scale), 0f),
+  y.coerceIn(size.height * (1f - scale), 0f),
+)
 
 @Composable
 private fun PickedColorPreview(
