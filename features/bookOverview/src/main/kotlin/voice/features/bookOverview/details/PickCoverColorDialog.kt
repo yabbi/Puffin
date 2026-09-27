@@ -194,13 +194,16 @@ private fun ColorPickingCover(
 
 // One finger picks a color, two fingers zoom and pan. Once a gesture has zoomed,
 // the remaining finger must not pick so lifting one finger doesn't move the marker.
+// A tap picks on release rather than on touch down, so the first finger of a pinch
+// doesn't move the marker before the second one lands.
 private suspend fun PointerInputScope.detectPickAndZoomGestures(
   onPick: (Offset) -> Unit,
   onTransform: (centroid: Offset, pan: Offset, zoom: Float) -> Unit,
 ) {
   awaitEachGesture {
     var transforming = false
-    awaitFirstDown()
+    var picked = false
+    val down = awaitFirstDown()
     do {
       val event = awaitPointerEvent()
       val pressed = event.changes.filter { it.pressed }
@@ -209,10 +212,14 @@ private suspend fun PointerInputScope.detectPickAndZoomGestures(
           transforming = true
           onTransform(event.calculateCentroid(), event.calculatePan(), event.calculateZoom())
         }
-        pressed.size == 1 && !transforming -> onPick(pressed.single().position)
+        pressed.size == 1 && !transforming -> {
+          picked = true
+          onPick(pressed.single().position)
+        }
       }
       event.changes.forEach { it.consume() }
     } while (event.changes.any { it.pressed })
+    if (!transforming && !picked) onPick(down.position)
   }
 }
 
