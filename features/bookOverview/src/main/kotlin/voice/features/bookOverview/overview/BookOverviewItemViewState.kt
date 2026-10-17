@@ -30,6 +30,7 @@ data class MiniPlayerViewState(
   val positionText: String,
   val durationText: String,
   val playing: Boolean,
+  val locked: Boolean = false,
 )
 
 internal fun Book.toItemViewState() = BookOverviewItemViewState(
@@ -42,17 +43,22 @@ internal fun Book.toItemViewState() = BookOverviewItemViewState(
   addedAt = content.addedAt,
 )
 
-internal fun Book.toMiniPlayerViewState(playing: Boolean) = MiniPlayerViewState(
+internal fun Book.toMiniPlayerViewState(
+  playing: Boolean,
+  locked: Boolean = false,
+) = MiniPlayerViewState(
   id = id,
-  chapterTitle = currentMark.name ?: currentChapter.name ?: content.name,
-  author = content.author,
-  cover = content.cover?.let(::ImmutableFile),
-  accentColor = content.accentColor,
+  // Mirrors the redacted notification so a locked adult book reveals nothing.
+  chapterTitle = if (locked) "Chapter ${content.currentChapterIndex + 1}" else currentMark.name ?: currentChapter.name ?: content.name,
+  author = if (locked) "Audiobook" else content.author,
+  cover = content.cover?.takeUnless { locked }?.let(::ImmutableFile),
+  accentColor = content.accentColor.takeUnless { locked },
   progress = progress(),
   // Global book position / total book duration, matching the player and notification.
   positionText = formatTime(position, duration),
   durationText = formatTime(duration),
   playing = playing,
+  locked = locked,
 )
 
 private fun Book.progress(): Float {

@@ -16,6 +16,7 @@ dependencies {
   implementation(projects.core.featureflag)
 
   implementation(libs.lifecycle)
+  implementation(libs.biometric)
   implementation(libs.documentFile)
 
   testImplementation(libs.bundles.testing.jvm)

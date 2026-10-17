@@ -111,7 +111,7 @@ class MediaItemProvider(
       }
       is MediaId.Category -> {
         bookRepository.all()
-          .filter { it.progressCategory == mediaId.category }
+          .filter { !it.content.isAdult && it.progressCategory == mediaId.category }
           .sortedWith(mediaId.category.comparator)
           .map { book ->
             mediaItem(book)

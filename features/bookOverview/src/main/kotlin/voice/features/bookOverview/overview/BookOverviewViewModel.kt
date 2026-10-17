@@ -36,6 +36,7 @@ import voice.core.featureflag.FeatureFlag
 import voice.core.featureflag.FolderPickerInSettingsFeatureFlagQualifier
 import voice.core.playback.LivePlaybackState
 import voice.core.playback.PlayerController
+import voice.core.playback.adult.AdultLibraryLock
 import voice.core.playback.overlay
 import voice.core.playback.playstate.PlayStateManager
 import voice.core.scanner.DeviceHasStoragePermissionBug
@@ -70,6 +71,7 @@ class BookOverviewViewModel(
   private val folderPickerInSettingsFeatureFlag: FeatureFlag<Boolean>,
   @ExperimentalPlaybackPersistenceQualifier
   private val experimentalPlaybackPersistenceFeatureFlag: FeatureFlag<Boolean>,
+  private val adultLibraryLock: AdultLibraryLock,
 ) {
 
   private val scope = MainScope()
@@ -88,6 +90,8 @@ class BookOverviewViewModel(
       .collectAsState().value
     val books = remember { repo.flow() }
       .collectAsState(initial = emptyList()).value
+    val adultUnlocked = remember { adultLibraryLock.unlocked }.collectAsState().value
+    val visibleBooks = books.filter { !it.content.isAdult || adultUnlocked }
     val currentBookId = remember { currentBookStoreDataStore.data }
       .collectAsState(initial = null).value
     val scannerActive = remember { mediaScanner.scannerActive }
@@ -108,7 +112,7 @@ class BookOverviewViewModel(
       GridMode.FOLLOW_DEVICE -> BookOverviewLayoutMode.Grid to 3
     }
 
-    val bookSearchViewState = bookSearchViewState(layoutMode)
+    val bookSearchViewState = bookSearchViewState(layoutMode, adultUnlocked)
     val experimentalPlaybackPersistence = experimentalPlaybackPersistenceFeatureFlag.get()
     val livePlaybackState: State<LivePlaybackState?> = if (experimentalPlaybackPersistence && currentBookId != null) {
       remember(currentBookId) {
@@ -123,7 +127,7 @@ class BookOverviewViewModel(
       gridColumns = gridColumns,
       currentBookId = currentBookId,
       isPlaying = playState == PlayStateManager.PlayState.Playing,
-      books = books
+      books = visibleBooks
         .groupBy {
           it.category
         }
@@ -160,11 +164,21 @@ class BookOverviewViewModel(
           val overlaidBook = livePlaybackState.value?.let(book::overlay) ?: book
           overlaidBook.toMiniPlayerViewState(
             playing = playState == PlayStateManager.PlayState.Playing,
+            locked = book.content.isAdult && !adultUnlocked,
           )
         }
       },
       selectedCategoryIndex = selectedCategoryIndex,
+      adultSection = when {
+        books.none { it.content.isAdult } -> null
+        adultUnlocked -> BookOverviewViewState.AdultSection.Unlocked
+        else -> BookOverviewViewState.AdultSection.Locked
+      },
     )
+  }
+
+  fun onAdultLibraryUnlocked() {
+    adultLibraryLock.unlock()
   }
 
   fun onCategorySelected(index: Int) {
@@ -174,7 +188,10 @@ class BookOverviewViewModel(
   }
 
   @Composable
-  private fun bookSearchViewState(layoutMode: BookOverviewLayoutMode): BookSearchViewState {
+  private fun bookSearchViewState(
+    layoutMode: BookOverviewLayoutMode,
+    adultUnlocked: Boolean,
+  ): BookSearchViewState {
     return if (searchActive) {
       val recentBookSearch = remember {
         recentBookSearchDao.recentBookSearches()
@@ -182,12 +199,14 @@ class BookOverviewViewModel(
       var searchBooks by remember {
         mutableStateOf(emptyList<BookOverviewItemViewState>())
       }
-      LaunchedEffect(query) {
-        searchBooks = search.search(query).map { it.toItemViewState() }
+      LaunchedEffect(query, adultUnlocked) {
+        searchBooks = search.search(query)
+          .filter { !it.content.isAdult || adultUnlocked }
+          .map { it.toItemViewState() }
       }
-      val suggestedAuthors: List<String> by produceState(initialValue = emptyList()) {
+      val suggestedAuthors: List<String> by produceState(initialValue = emptyList(), adultUnlocked) {
         value = contentRepo.all()
-          .filter { it.isActive }
+          .filter { it.isActive && (!it.isAdult || adultUnlocked) }
           .mapNotNull { it.author }
           .toSet()
           .sortedNaturally()
@@ -243,7 +262,9 @@ class BookOverviewViewModel(
     val query = query.trim()
     if (query.isNotBlank()) {
       scope.launch {
-        recentBookSearchDao.add(query)
+        if (contentRepo.get(id)?.isAdult != true) {
+          recentBookSearchDao.add(query)
+        }
       }
     }
     searchActive = false

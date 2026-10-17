@@ -138,6 +138,7 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
     onPermissionBugCardClick = bookOverviewViewModel::onPermissionBugCardClick,
     onMiniPlayerClick = bookOverviewViewModel::onMiniPlayerClick,
     onCategorySelected = bookOverviewViewModel::onCategorySelected,
+    onAdultUnlocked = bookOverviewViewModel::onAdultLibraryUnlocked,
   )
   val deleteBookViewState = deleteBookViewModel.state.value
   if (deleteBookViewState != null) {
@@ -296,10 +297,21 @@ internal fun BookOverview(
   onMiniPlayerClick: (BookId) -> Unit,
   modifier: Modifier = Modifier,
   onCategorySelected: (Int) -> Unit = {},
+  onAdultUnlocked: () -> Unit = {},
   snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
   val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
   val scope = rememberCoroutineScope()
+  val pages = if (viewState.adultSection != null) categoryOrder + BookOverviewCategory.ADULT else categoryOrder
+  var afterUnlock by remember { mutableStateOf<() -> Unit>({}) }
+  val unlockPrompt = rememberAdultUnlockPrompt {
+    onAdultUnlocked()
+    afterUnlock()
+  }
+  fun unlockThen(action: () -> Unit) {
+    afterUnlock = action
+    unlockPrompt()
+  }
   Scaffold(
     modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -318,7 +330,13 @@ internal fun BookOverview(
         viewState.miniPlayer?.let { miniPlayer ->
           MiniPlayer(
             viewState = miniPlayer,
-            onClick = { onMiniPlayerClick(miniPlayer.id) },
+            onClick = {
+              if (miniPlayer.locked) {
+                unlockThen { onMiniPlayerClick(miniPlayer.id) }
+              } else {
+                onMiniPlayerClick(miniPlayer.id)
+              }
+            },
             onPlayClick = onPlayButtonClick,
           )
         }
@@ -334,7 +352,7 @@ internal fun BookOverview(
         .padding(contentPadding)
         .consumeWindowInsets(contentPadding),
     ) {
-      val pagerState = rememberPagerState(initialPage = 0) { categoryOrder.size }
+      val pagerState = rememberPagerState(initialPage = 0) { pages.size }
 
       // Restore the last-used tab once the persisted value has loaded; falls back to the
       // default category the first time the library is opened. Applied only once.
@@ -356,21 +374,34 @@ internal fun BookOverview(
         }
       }
 
+      fun showAdultPage() {
+        scope.launch { pagerState.animateScrollToPage(pages.indexOf(BookOverviewCategory.ADULT)) }
+      }
       FilterChips(
         selectedIndex = pagerState.targetPage,
         onSelect = { index -> scope.launch { pagerState.animateScrollToPage(index) } },
+        adultSection = viewState.adultSection,
+        onAdultClick = {
+          if (viewState.adultSection == BookOverviewViewState.AdultSection.Locked) {
+            unlockThen(::showAdultPage)
+          } else {
+            showAdultPage()
+          }
+        },
       )
       HorizontalPager(
         state = pagerState,
         modifier = Modifier.fillMaxSize(),
         beyondViewportPageCount = 1,
-        key = { page -> categoryOrder[page] },
+        key = { page -> pages[page] },
       ) { page ->
-        val category = categoryOrder[page]
+        val category = pages[page]
         val entries = remember(viewState.books, category) {
           viewState.books[category].orEmpty().toList()
         }
-        if (entries.isEmpty() && !viewState.showStoragePermissionBugCard) {
+        if (category == BookOverviewCategory.ADULT && viewState.adultSection == BookOverviewViewState.AdultSection.Locked) {
+          LockedAdultSection(onUnlock = { unlockThen {} })
+        } else if (entries.isEmpty() && !viewState.showStoragePermissionBugCard) {
           EmptyCategory(category = category, isLoading = viewState.isLoading)
         } else {
           when (viewState.layoutMode) {

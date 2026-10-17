@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.yield
 import org.junit.Test
+import voice.core.data.Book
 import voice.core.data.BookId
 import voice.core.data.GridMode
 import voice.core.data.repo.BookContentRepo
@@ -24,6 +25,7 @@ import voice.core.data.repo.internals.dao.RecentBookSearchDao
 import voice.core.featureflag.MemoryFeatureFlag
 import voice.core.playback.LivePlaybackState
 import voice.core.playback.PlayerController
+import voice.core.playback.adult.AdultLibraryLock
 import voice.core.playback.overlay
 import voice.core.playback.playstate.PlayStateManager
 import voice.core.scanner.DeviceHasStoragePermissionBug
@@ -40,37 +42,10 @@ class BookOverviewViewModelTest {
     val currentBook = book(name = "Current", time = 1_000)
     val otherBook = book(name = "Other", time = 2_000)
     val livePlaybackFlow = MutableStateFlow<LivePlaybackState?>(null)
-    val viewModel = BookOverviewViewModel(
-      repo = mockk<BookRepository> {
-        every { flow() } returns MutableStateFlow(listOf(currentBook, otherBook))
-      },
-      mediaScanner = mockk<MediaScanTrigger> {
-        every { scannerActive } returns MutableStateFlow(false)
-        every { scan(any()) } just Runs
-      },
-      playStateManager = PlayStateManager(),
-      playerController = mockk<PlayerController> {
-        every { livePlaybackStateFlow(currentBook.id) } returns livePlaybackFlow
-      },
-      currentBookStoreDataStore = MemoryDataStore(currentBook.id),
-      gridModeStore = MemoryDataStore(GridMode.LIST),
-      selectedCategoryStore = MemoryDataStore(-1),
-      gridCount = mockk<GridCount> {
-        every { useGridAsDefault() } returns false
-      },
-      navigator = mockk<Navigator>(),
-      recentBookSearchDao = mockk<RecentBookSearchDao> {
-        every { recentBookSearches() } returns MutableStateFlow(emptyList())
-      },
-      search = mockk<BookSearch> {
-        coEvery { search(any()) } returns emptyList()
-      },
-      contentRepo = mockk<BookContentRepo>(),
-      deviceHasStoragePermissionBug = mockk<DeviceHasStoragePermissionBug> {
-        every { hasBug } returns MutableStateFlow(false)
-      },
-      folderPickerInSettingsFeatureFlag = MemoryFeatureFlag(false),
-      experimentalPlaybackPersistenceFeatureFlag = MemoryFeatureFlag(true),
+    val viewModel = viewModel(
+      books = listOf(currentBook, otherBook),
+      currentBookId = currentBook.id,
+      livePlaybackFlow = livePlaybackFlow,
     )
 
     backgroundScope.launchMolecule(RecompositionMode.Immediate) {
@@ -101,6 +76,114 @@ class BookOverviewViewModelTest {
       expectNoEvents()
     }
   }
+
+  @Test
+  fun `adult books are kept out of the regular categories while locked`() = runTest {
+    val regularBook = book(name = "Regular", time = 0)
+    val adultBook = book(name = "Adult", time = 0, isAdult = true)
+    val viewModel = viewModel(books = listOf(regularBook, adultBook), lock = AdultLibraryLock())
+
+    backgroundScope.launchMolecule(RecompositionMode.Immediate) {
+      viewModel.state()
+    }.test {
+      awaitItem() shouldBe BookOverviewViewState.Loading
+      val state = awaitItem()
+
+      state.adultSection shouldBe BookOverviewViewState.AdultSection.Locked
+      state.books.keys shouldBe setOf(BookOverviewCategory.NOT_STARTED)
+      state.books.getValue(BookOverviewCategory.NOT_STARTED).keys shouldBe setOf(regularBook.id)
+    }
+  }
+
+  @Test
+  fun `unlocking shows adult books in their own category`() = runTest {
+    val regularBook = book(name = "Regular", time = 0)
+    val adultBook = book(name = "Adult", time = 0, isAdult = true)
+    val lock = AdultLibraryLock()
+    val viewModel = viewModel(books = listOf(regularBook, adultBook), lock = lock)
+
+    backgroundScope.launchMolecule(RecompositionMode.Immediate) {
+      viewModel.state()
+    }.test {
+      awaitItem() shouldBe BookOverviewViewState.Loading
+      awaitItem()
+
+      viewModel.onAdultLibraryUnlocked()
+      val state = awaitItem()
+
+      state.adultSection shouldBe BookOverviewViewState.AdultSection.Unlocked
+      state.books.getValue(BookOverviewCategory.ADULT).keys shouldBe setOf(adultBook.id)
+      state.books.getValue(BookOverviewCategory.NOT_STARTED).keys shouldBe setOf(regularBook.id)
+    }
+  }
+
+  @Test
+  fun `no adult section without adult books`() = runTest {
+    val viewModel = viewModel(books = listOf(book(time = 0)))
+
+    backgroundScope.launchMolecule(RecompositionMode.Immediate) {
+      viewModel.state()
+    }.test {
+      awaitItem() shouldBe BookOverviewViewState.Loading
+      awaitItem().adultSection shouldBe null
+    }
+  }
+
+  @Test
+  fun `mini player hides a locked adult book`() = runTest {
+    val adultBook = book(name = "Adult", author = "Someone", isAdult = true)
+    val viewModel = viewModel(books = listOf(adultBook), currentBookId = adultBook.id)
+
+    backgroundScope.launchMolecule(RecompositionMode.Immediate) {
+      viewModel.state()
+    }.test {
+      awaitItem() shouldBe BookOverviewViewState.Loading
+      val miniPlayer = awaitItem().miniPlayer!!
+
+      miniPlayer.locked shouldBe true
+      miniPlayer.chapterTitle shouldBe "Chapter 1"
+      miniPlayer.author shouldBe "Audiobook"
+    }
+  }
+
+  private fun viewModel(
+    books: List<Book>,
+    currentBookId: BookId? = null,
+    livePlaybackFlow: Flow<LivePlaybackState?> = MutableStateFlow(null),
+    lock: AdultLibraryLock = AdultLibraryLock(),
+  ) = BookOverviewViewModel(
+    repo = mockk<BookRepository> {
+      every { flow() } returns MutableStateFlow(books)
+    },
+    mediaScanner = mockk<MediaScanTrigger> {
+      every { scannerActive } returns MutableStateFlow(false)
+      every { scan(any()) } just Runs
+    },
+    playStateManager = PlayStateManager(),
+    playerController = mockk<PlayerController> {
+      every { livePlaybackStateFlow(any()) } returns livePlaybackFlow
+    },
+    currentBookStoreDataStore = MemoryDataStore(currentBookId),
+    gridModeStore = MemoryDataStore(GridMode.LIST),
+    selectedCategoryStore = MemoryDataStore(-1),
+    gridCount = mockk<GridCount> {
+      every { useGridAsDefault() } returns false
+    },
+    navigator = mockk<Navigator>(),
+    recentBookSearchDao = mockk<RecentBookSearchDao> {
+      every { recentBookSearches() } returns MutableStateFlow(emptyList())
+    },
+    search = mockk<BookSearch> {
+      coEvery { search(any()) } returns emptyList()
+    },
+    contentRepo = mockk<BookContentRepo>(),
+    deviceHasStoragePermissionBug = mockk<DeviceHasStoragePermissionBug> {
+      every { hasBug } returns MutableStateFlow(false)
+    },
+    folderPickerInSettingsFeatureFlag = MemoryFeatureFlag(false),
+    experimentalPlaybackPersistenceFeatureFlag = MemoryFeatureFlag(true),
+    adultLibraryLock = lock,
+  )
 
   private fun BookOverviewViewState.currentBook(bookId: BookId): BookOverviewItemViewState {
     return books.getValue(BookOverviewCategory.CURRENT).getValue(bookId).value

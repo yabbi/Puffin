@@ -73,6 +73,7 @@
     <string name="book_header_current">Current</string>
     <string name="book_header_not_started">Not started Yet</string>
     <string name="book_header_completed">Completed</string>
+    <string name="book_header_adult">Private</string>
     <string name="close">Close</string>
     <string name="delete">Delete</string>
     <string name="add">Add</string>

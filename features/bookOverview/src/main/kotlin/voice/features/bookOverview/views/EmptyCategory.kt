@@ -33,6 +33,7 @@ internal fun EmptyCategory(
     BookOverviewCategory.NOT_STARTED -> UiR.drawable.ic_mage_inbox to "No new audiobooks here.\nAdded books you haven't started appear here."
     BookOverviewCategory.CURRENT -> UiR.drawable.ic_mage_chart_15 to "Nothing in progress.\nStart a book and it shows up here."
     BookOverviewCategory.FINISHED -> UiR.drawable.ic_mage_inbox_check to "No finished books yet.\nBooks you complete are collected here."
+    BookOverviewCategory.ADULT -> UiR.drawable.ic_mage_lock to "No private books.\nMark a book as adult content in Edit Book."
   }
 
   Box(
