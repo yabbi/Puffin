@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.media3.common.C
 import androidx.media3.common.ForwardingPlayer
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.PlayerMessage
@@ -29,6 +30,7 @@ import voice.core.playback.misc.Decibel
 import voice.core.playback.misc.VolumeGain
 import voice.core.playback.session.MediaId
 import voice.core.playback.session.MediaItemProvider
+import voice.core.playback.session.isRedacted
 import voice.core.playback.session.toMediaIdOrNull
 import voice.core.sleeptimer.SleepTimer
 import voice.core.sleeptimer.SleepTimerState
@@ -127,6 +129,33 @@ class VoicePlayer(
           }
         }
       }
+    }
+  }
+
+  private val redactingListeners = mutableMapOf<Player.Listener, Player.Listener>()
+
+  override fun addListener(listener: Player.Listener) {
+    val redacting = RedactingListener(listener)
+    redactingListeners[listener] = redacting
+    super.addListener(redacting)
+  }
+
+  override fun removeListener(listener: Player.Listener) {
+    redactingListeners.remove(listener)?.let { super.removeListener(it) }
+  }
+
+  override fun getMediaMetadata(): MediaMetadata = redacted(super.getMediaMetadata())
+
+  // ExoPlayer fills fields the media item leaves unset from the file's embedded tags,
+  // which would leak the title and cover art of adult books.
+  private fun redacted(metadata: MediaMetadata): MediaMetadata {
+    val item = currentMediaItem ?: return metadata
+    return if (item.isRedacted) item.mediaMetadata else metadata
+  }
+
+  private inner class RedactingListener(private val delegate: Player.Listener) : Player.Listener by delegate {
+    override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
+      delegate.onMediaMetadataChanged(redacted(mediaMetadata))
     }
   }
 

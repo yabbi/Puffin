@@ -120,6 +120,7 @@ data class EditBookForm(
   val description: String,
   val cover: ImmutableFile?,
   val accentColor: Int?,
+  val isAdult: Boolean,
 )
 
 private fun formatHoursMinutes(ms: Long): String {

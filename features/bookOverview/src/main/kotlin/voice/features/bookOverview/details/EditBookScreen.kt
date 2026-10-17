@@ -26,6 +26,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -99,7 +100,7 @@ fun EditBookScreen(bookId: BookId) {
 private fun EditBookContent(
   form: EditBookForm,
   onBack: () -> Unit,
-  onSave: (String, String, String, String) -> Unit,
+  onSave: (String, String, String, String, Boolean) -> Unit,
   onPickCover: (Uri) -> Unit,
   onDownloadCover: () -> Unit,
   onAdjustCrop: () -> Unit,
@@ -110,6 +111,7 @@ private fun EditBookContent(
   var author by remember { mutableStateOf(form.author) }
   var date by remember { mutableStateOf(form.date) }
   var description by remember { mutableStateOf(form.description) }
+  var isAdult by remember { mutableStateOf(form.isAdult) }
   var showCoverMenu by remember { mutableStateOf(false) }
   var showColorPicker by remember { mutableStateOf(false) }
 
@@ -230,6 +232,8 @@ private fun EditBookContent(
       EditField("Date", date) { date = it }
       Spacer(Modifier.height(16.dp))
       EditField("Description", description, singleLine = false) { description = it }
+      Spacer(Modifier.height(16.dp))
+      AdultToggle(isAdult) { isAdult = it }
       Spacer(Modifier.height(24.dp))
     }
 
@@ -239,7 +243,7 @@ private fun EditBookContent(
         .navigationBarsPadding()
         .padding(horizontal = 20.dp, vertical = 12.dp)
         .height(48.dp)
-        .clickable { onSave(title, author, date, description) },
+        .clickable { onSave(title, author, date, description, isAdult) },
       shape = RoundedCornerShape(12.dp),
       color = RavenTheme.colors.primary,
     ) {
@@ -275,6 +279,35 @@ private fun CoverMenuItem(
     letterSpacing = (-0.07).sp,
     color = RavenTheme.colors.subTitle,
   )
+}
+
+@Composable
+private fun AdultToggle(
+  checked: Boolean,
+  onCheckedChange: (Boolean) -> Unit,
+) {
+  Row(
+    modifier = Modifier
+      .fillMaxWidth()
+      .clickable { onCheckedChange(!checked) },
+    verticalAlignment = Alignment.CenterVertically,
+  ) {
+    Column(Modifier.weight(1f)) {
+      Text(
+        text = "Adult Content",
+        fontSize = 16.sp,
+        letterSpacing = (-0.08).sp,
+        color = RavenTheme.colors.title,
+      )
+      Text(
+        text = "Hides the title and cover in notifications",
+        fontSize = 12.sp,
+        letterSpacing = (-0.06).sp,
+        color = RavenTheme.colors.caption,
+      )
+    }
+    Switch(checked = checked, onCheckedChange = onCheckedChange)
+  }
 }
 
 @Composable

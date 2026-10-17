@@ -152,27 +152,46 @@ class MediaItemProvider(
     }
 
   fun mediaItem(book: Book): MediaItem = MediaItem(
-    title = book.content.name,
+    title = if (book.content.isAdult) redactedBookTitle() else book.content.name,
     mediaId = MediaId.Book(book.id),
     browsable = false,
     isPlayable = true,
-    imageUri = book.content.cover?.toProvidedUri(),
+    imageUri = book.content.cover?.takeUnless { book.content.isAdult }?.toProvidedUri(),
     mediaType = MediaType.AudioBook,
+    redacted = book.content.isAdult,
   )
 
   private fun mediaItem(
     chapter: Chapter,
     content: BookContent,
-  ) = MediaItem(
-    title = chapter.name ?: chapter.id.value,
-    mediaId = MediaId.Chapter(bookId = content.id, chapterId = chapter.id),
-    browsable = false,
-    isPlayable = true,
-    sourceUri = chapter.id.toUri(),
-    imageUri = content.cover?.toProvidedUri(),
-    artist = content.author,
-    mediaType = MediaType.AudioBookChapter,
-  )
+  ) = if (content.isAdult) {
+    MediaItem(
+      title = application.getString(
+        StringsR.string.media_session_redacted_chapter,
+        content.chapters.indexOf(chapter.id) + 1,
+      ),
+      mediaId = MediaId.Chapter(bookId = content.id, chapterId = chapter.id),
+      browsable = false,
+      isPlayable = true,
+      sourceUri = chapter.id.toUri(),
+      artist = redactedBookTitle(),
+      mediaType = MediaType.AudioBookChapter,
+      redacted = true,
+    )
+  } else {
+    MediaItem(
+      title = chapter.name ?: chapter.id.value,
+      mediaId = MediaId.Chapter(bookId = content.id, chapterId = chapter.id),
+      browsable = false,
+      isPlayable = true,
+      sourceUri = chapter.id.toUri(),
+      imageUri = content.cover?.toProvidedUri(),
+      artist = content.author,
+      mediaType = MediaType.AudioBookChapter,
+    )
+  }
+
+  private fun redactedBookTitle(): String = application.getString(StringsR.string.media_session_redacted_book)
 
   private fun File.toProvidedUri(): Uri = imageFileProvider.uri(this)
 }

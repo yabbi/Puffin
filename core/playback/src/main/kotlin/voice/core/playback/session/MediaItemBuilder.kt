@@ -1,6 +1,7 @@
 package voice.core.playback.session
 
 import android.net.Uri
+import android.os.Bundle
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import kotlinx.serialization.SerializationException
@@ -23,6 +24,7 @@ internal fun MediaItem(
   sourceUri: Uri? = null,
   imageUri: Uri? = null,
   mediaType: MediaType,
+  redacted: Boolean = false,
 ): MediaItem {
   val metadata =
     MediaMetadata.Builder()
@@ -40,6 +42,9 @@ internal fun MediaItem(
           MediaType.AudioBookRoot -> MediaMetadata.MEDIA_TYPE_FOLDER_AUDIO_BOOKS
         },
       )
+      .apply {
+        if (redacted) setExtras(Bundle().apply { putBoolean(EXTRA_REDACTED, true) })
+      }
       .build()
 
   return MediaItem.Builder()
@@ -48,6 +53,12 @@ internal fun MediaItem(
     .setUri(sourceUri)
     .build()
 }
+
+private const val EXTRA_REDACTED = "voice.redacted"
+
+/** Redacted items must only expose their own metadata, never the tags embedded in the audio file. */
+val MediaItem.isRedacted: Boolean
+  get() = mediaMetadata.extras?.getBoolean(EXTRA_REDACTED) == true
 
 fun String.toMediaIdOrNull(): MediaId? = try {
   Json.decodeFromString(MediaId.serializer(), this)

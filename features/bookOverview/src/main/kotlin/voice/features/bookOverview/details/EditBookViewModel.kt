@@ -37,6 +37,7 @@ class EditBookViewModel(
           description = book.content.description.orEmpty(),
           cover = book.content.cover?.let(::ImmutableFile),
           accentColor = book.content.accentColor,
+          isAdult = book.content.isAdult,
         )
       }
     }
@@ -51,6 +52,7 @@ class EditBookViewModel(
     author: String,
     date: String,
     description: String,
+    isAdult: Boolean,
   ) {
     scope.launch {
       repo.updateBook(bookId) { content ->
@@ -59,6 +61,7 @@ class EditBookViewModel(
           author = author.trim().ifBlank { null },
           year = date.trim().toIntOrNull(),
           description = description.trim().ifBlank { null },
+          isAdult = isAdult,
         )
       }
     }
