@@ -135,7 +135,7 @@ class VoicePlayer(
   private val redactingListeners = mutableMapOf<Player.Listener, Player.Listener>()
 
   override fun addListener(listener: Player.Listener) {
-    val redacting = RedactingListener(listener)
+    val redacting = RedactingListener(listener, ::redacted)
     redactingListeners[listener] = redacting
     super.addListener(redacting)
   }
@@ -151,12 +151,6 @@ class VoicePlayer(
   private fun redacted(metadata: MediaMetadata): MediaMetadata {
     val item = currentMediaItem ?: return metadata
     return if (item.isRedacted) item.mediaMetadata else metadata
-  }
-
-  private inner class RedactingListener(private val delegate: Player.Listener) : Player.Listener by delegate {
-    override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
-      delegate.onMediaMetadataChanged(redacted(mediaMetadata))
-    }
   }
 
   override fun getAvailableCommands(): Player.Commands {

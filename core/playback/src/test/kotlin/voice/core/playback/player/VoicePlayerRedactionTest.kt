@@ -104,6 +104,22 @@ class VoicePlayerRedactionTest {
     received.last().artist shouldBe "Audiobook"
   }
 
+  @Test
+  fun `listeners still receive playback events`() {
+    val states = mutableListOf<Int>()
+    player.addListener(
+      object : Player.Listener {
+        override fun onPlaybackStateChanged(playbackState: Int) {
+          states += playbackState
+        }
+      },
+    )
+
+    play(chapterItem(redacted = false))
+
+    states.last() shouldBe Player.STATE_READY
+  }
+
   private fun play(item: MediaItem) {
     internalPlayer.setMediaItem(item)
     internalPlayer.prepare()
