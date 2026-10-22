@@ -24,8 +24,6 @@ Open source audiobook player with the best experience.
 - [FAQ](docs/faq.md)
 - [Architecture](docs/architecture.md) · [Development](docs/development.md)
 
-Site (GitHub Pages): https://emerald-realm.github.io/Vultr/
-
 ## Building
 
 ```
