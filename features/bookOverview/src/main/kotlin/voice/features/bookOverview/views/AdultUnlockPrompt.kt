@@ -38,6 +38,8 @@ internal fun rememberAdultUnlockPrompt(onUnlocked: () -> Unit): () -> Unit {
           BiometricPrompt.PromptInfo.Builder()
             .setTitle("Unlock private books")
             .setAllowedAuthenticators(AUTHENTICATORS)
+            // Continue as soon as face unlock matches instead of waiting for a confirm tap.
+            .setConfirmationRequired(false)
             .build(),
         )
       }

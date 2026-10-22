@@ -1,6 +1,7 @@
 package voice.core.playback.player
 
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Player
 import androidx.media3.test.utils.FakeMediaSource
 import androidx.media3.test.utils.FakeTimeline
@@ -11,6 +12,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.kotest.matchers.Matcher
 import io.kotest.matchers.MatcherResult
 import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.every
@@ -86,7 +88,14 @@ class VoicePlayerTest {
     .build()
 
   private val scope = TestScope()
-  private val mediaItemProvider = MediaItemProvider(mockk(), mockk(), mockk(), mockk(), mockk(), mockk())
+  private val mediaItemProvider = MediaItemProvider(
+    mockk(),
+    ApplicationProvider.getApplicationContext(),
+    mockk(),
+    mockk(),
+    mockk(),
+    mockk(),
+  )
   private val bookId = BookId(UUID.randomUUID().toString())
   private lateinit var currentBook: Book
   private val player = VoicePlayer(
@@ -322,8 +331,62 @@ class VoicePlayerTest {
     player.shouldHavePosition(0, 12_000)
   }
 
-  private fun TestScope.setMediaItems(chapters: List<Chapter>) {
-    currentBook = book(chapters, bookId)
+  @Test
+  fun `redacted chapter title follows chapter marks inside a file`() = scope.runTest {
+    setMediaItems(
+      listOf(
+        chapter(
+          ChapterMark(startMs = 0, endMs = 19_999, name = null),
+          ChapterMark(startMs = 20_000, endMs = 30_000, name = null),
+        ),
+        chapter(
+          ChapterMark(startMs = 0, endMs = 19_999, name = null),
+          ChapterMark(startMs = 20_000, endMs = 30_000, name = null),
+        ),
+      ),
+      isAdult = true,
+    )
+    val notifiedTitles = mutableListOf<CharSequence?>()
+    player.addListener(
+      object : Player.Listener {
+        override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
+          notifiedTitles += mediaMetadata.title
+        }
+      },
+    )
+    player.prepare()
+    awaitReady()
+    player.mediaMetadata.title shouldBe "Chapter 1"
+
+    player.seekTo(0, 25_000)
+    player.mediaMetadata.title shouldBe "Chapter 2"
+    notifiedTitles.last() shouldBe "Chapter 2"
+    player.currentPosition shouldBe 25_000
+
+    player.seekTo(1, 25_000)
+    player.mediaMetadata.title shouldBe "Chapter 4"
+  }
+
+  @Test
+  fun `adult books replace a playing regular book outside the car`() = scope.runTest {
+    setMediaItems(listOf(chapter(ChapterMark(startMs = 0, endMs = 30_000, name = null))))
+    player.prepare()
+    awaitReady()
+    player.play()
+
+    setMediaItems(listOf(chapter(ChapterMark(startMs = 0, endMs = 30_000, name = null))), isAdult = true)
+    player.prepare()
+    awaitReady()
+
+    player.currentMediaItem!!.mediaId.toMediaIdOrNull() shouldBe MediaId.Chapter(bookId, currentBook.chapters.single().id)
+    player.mediaMetadata.title shouldBe "Chapter 1"
+  }
+
+  private fun TestScope.setMediaItems(
+    chapters: List<Chapter>,
+    isAdult: Boolean = false,
+  ) {
+    currentBook = book(chapters, bookId).let { it.copy(content = it.content.copy(isAdult = isAdult)) }
     player.setMediaItem(mediaItemProvider.mediaItem(currentBook))
     runCurrent()
   }

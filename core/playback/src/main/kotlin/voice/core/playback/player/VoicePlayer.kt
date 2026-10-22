@@ -10,6 +10,7 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.PlayerMessage
 import dev.zacsweers.metro.Inject
+import dev.zacsweers.metro.SingleIn
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ import voice.core.analytics.api.Analytics
 import voice.core.data.BookContent
 import voice.core.data.BookId
 import voice.core.data.Chapter
+import voice.core.data.markNumber
 import voice.core.data.repo.BookRepository
 import voice.core.data.repo.BookContentRepo
 import voice.core.data.repo.ChapterRepo
@@ -26,6 +28,7 @@ import voice.core.data.store.AutoRewindAmountStore
 import voice.core.data.store.CurrentBookStore
 import voice.core.data.store.SeekTimeStore
 import voice.core.logging.api.Logger
+import voice.core.playback.di.PlaybackScope
 import voice.core.playback.misc.Decibel
 import voice.core.playback.misc.VolumeGain
 import voice.core.playback.session.MediaId
@@ -39,6 +42,7 @@ import kotlin.time.Duration.Companion.ZERO
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
+@SingleIn(PlaybackScope::class)
 @Inject
 class VoicePlayer(
   private val player: Player,
@@ -72,6 +76,15 @@ class VoicePlayer(
             -> historyRecorder.onNewChapter()
             else -> Unit
           }
+          refreshRedactedTitle()
+        }
+
+        override fun onPositionDiscontinuity(
+          oldPosition: Player.PositionInfo,
+          newPosition: Player.PositionInfo,
+          reason: Int,
+        ) {
+          refreshRedactedTitle()
         }
       },
     )
@@ -134,6 +147,9 @@ class VoicePlayer(
 
   private val redactingListeners = mutableMapOf<Player.Listener, Player.Listener>()
 
+  private var redactedChapters: List<Chapter>? = null
+  private var redactedTitle: String? = null
+
   override fun addListener(listener: Player.Listener) {
     val redacting = RedactingListener(listener, ::redacted)
     redactingListeners[listener] = redacting
@@ -149,8 +165,25 @@ class VoicePlayer(
   // ExoPlayer fills fields the media item leaves unset from the file's embedded tags,
   // which would leak the title and cover art of adult books.
   private fun redacted(metadata: MediaMetadata): MediaMetadata {
-    val item = currentMediaItem ?: return metadata
-    return if (item.isRedacted) item.mediaMetadata else metadata
+    val item = currentMediaItem?.takeIf { it.isRedacted } ?: return metadata
+    val title = redactedTitle ?: return item.mediaMetadata
+    return item.mediaMetadata.buildUpon().setTitle(title).build()
+  }
+
+  // A single file can hold many chapter marks, so the redacted "Chapter N" title follows the
+  // playback position. Listeners are told directly, as replacing the media item could restart it.
+  private fun refreshRedactedTitle() {
+    val chapters = redactedChapters
+    val index = player.currentMediaItemIndex
+    val title = if (chapters != null && player.currentMediaItem?.isRedacted == true && index in chapters.indices) {
+      mediaItemProvider.redactedChapterTitle(chapters.markNumber(index, player.currentPosition))
+    } else {
+      null
+    }
+    if (title == redactedTitle) return
+    redactedTitle = title
+    val metadata = mediaMetadata
+    redactingListeners.keys.toList().forEach { it.onMediaMetadataChanged(metadata) }
   }
 
   override fun getAvailableCommands(): Player.Commands {
@@ -349,6 +382,8 @@ class VoicePlayer(
             book.content.positionInChapter,
           )
           registerChapterMarkCallbacks(book.chapters)
+          redactedChapters = book.chapters.takeIf { book.content.isAdult }
+          refreshRedactedTitle()
         }
       } else {
         Logger.w("Unexpected mediaId=$mediaId")
@@ -359,6 +394,7 @@ class VoicePlayer(
   private fun registerChapterMarkCallbacks(chapters: List<Chapter>) {
     if (player is ExoPlayer) {
       val boundaryHandler = PlayerMessage.Target { _, payload ->
+        refreshRedactedTitle()
         if (payload is ChapterPausePayload && payload != ChapterPausePayload.Zero) {
           if (payload.positionMs > 0) {
             historyRecorder.onNewChapter()

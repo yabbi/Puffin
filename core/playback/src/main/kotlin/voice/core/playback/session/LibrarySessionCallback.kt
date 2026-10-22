@@ -33,6 +33,7 @@ import voice.core.data.repo.BookRepository
 import voice.core.data.repo.BookmarkRepo
 import voice.core.data.store.CurrentBookStore
 import voice.core.logging.api.Logger
+import voice.core.playback.adult.CarState
 import voice.core.playback.player.VoicePlayer
 import voice.core.playback.session.search.BookSearchHandler
 import voice.core.playback.session.search.BookSearchParser
@@ -50,6 +51,7 @@ class LibrarySessionCallback(
   private val bookmarkRepo: BookmarkRepo,
   private val mediaButtonEventHandler: MediaButtonEventHandler,
   private val dynamicMediaButtons: DynamicMediaButtons,
+  private val carState: CarState,
 ) : MediaLibrarySession.Callback {
 
   override fun onAddMediaItems(
@@ -76,7 +78,7 @@ class LibrarySessionCallback(
     val item = mediaItems.singleOrNull()
     return if (startIndex == C.INDEX_UNSET && startPositionMs == C.TIME_UNSET && item != null) {
       scope.future {
-        onSetMediaItemsForSingleItem(item)
+        onSetMediaItemsForSingleItem(item, controller)
           ?: super.onSetMediaItems(mediaSession, controller, mediaItems, startIndex, startPositionMs).await()
       }
     } else {
@@ -84,11 +86,14 @@ class LibrarySessionCallback(
     }
   }
 
-  private suspend fun onSetMediaItemsForSingleItem(item: MediaItem): MediaItemsWithStartPosition? {
+  private suspend fun onSetMediaItemsForSingleItem(
+    item: MediaItem,
+    controller: ControllerInfo,
+  ): MediaItemsWithStartPosition? {
     val searchQuery = item.requestMetadata.searchQuery
     return if (searchQuery != null) {
       val search = bookSearchParser.parse(searchQuery, item.requestMetadata.extras)
-      val searchResult = bookSearchHandler.handle(search) ?: return null
+      val searchResult = bookSearchHandler.handle(search, excludeAdult = excludesAdult(controller)) ?: return null
       currentBookStoreId.updateData { searchResult.id }
       mediaItemProvider.mediaItemsWithStartPosition(searchResult)
     } else {
@@ -151,7 +156,7 @@ class LibrarySessionCallback(
   ): ListenableFuture<MediaItemsWithStartPosition> {
     Logger.d("onPlaybackResumption")
     return scope.future {
-      val currentBook = currentBook()
+      val currentBook = currentBook()?.takeUnless { excludesAdult(controller) && it.content.isAdult }
       if (currentBook != null) {
         mediaItemProvider.mediaItemsWithStartPosition(currentBook)
       } else {
@@ -164,6 +169,11 @@ class LibrarySessionCallback(
     val bookId = currentBookStoreId.data.first() ?: return null
     return bookRepository.get(bookId)
   }
+
+  // Car searches and resuming without the user picking a book leave adult books out.
+  private fun excludesAdult(controller: ControllerInfo): Boolean = controller.isAndroidAuto || carState.inCar.value
+
+  private suspend fun isAdult(bookId: BookId): Boolean = bookRepository.get(bookId)?.content?.isAdult == true
 
   override fun onConnect(
     session: MediaSession,
@@ -205,6 +215,7 @@ class LibrarySessionCallback(
 
   private suspend fun prepareCurrentBook() {
     val bookId = currentBookStoreId.data.first() ?: return
+    if (isAdult(bookId)) return
     val book = bookRepository.get(bookId) ?: return
     val item = mediaItemProvider.mediaItem(book)
     player.setMediaItem(item)

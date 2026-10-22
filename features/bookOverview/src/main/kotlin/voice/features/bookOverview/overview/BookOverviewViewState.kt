@@ -23,13 +23,14 @@ data class BookOverviewViewState(
   val miniPlayer: MiniPlayerViewState?,
   // Persisted last-used category index; null while still loading, -1 when never chosen.
   val selectedCategoryIndex: Int?,
-  // Null when no book is marked as adult, so the section isn't even hinted at.
-  val adultSection: AdultSection? = null,
+  // Null when no book is marked as adult, so the private library isn't even hinted at.
+  val privateLibrary: PrivateLibrary? = null,
 ) {
 
-  enum class AdultSection {
+  enum class PrivateLibrary {
     Locked,
     Unlocked,
+    Open,
   }
 
   companion object {

@@ -40,6 +40,7 @@ import voice.core.ui.R as UiR
 @Composable
 internal fun BookOverviewTopBar(
   viewState: BookOverviewViewState,
+  onPrivateLibraryClick: () -> Unit,
   onBookFolderClick: () -> Unit,
   onSettingsClick: () -> Unit,
   onActiveChange: (Boolean) -> Unit,
@@ -62,6 +63,9 @@ internal fun BookOverviewTopBar(
       )
     } else {
       MyLibraryHeader(
+        title = if (viewState.privateLibrary == BookOverviewViewState.PrivateLibrary.Open) "Private Library" else "My Library",
+        privateLibrary = viewState.privateLibrary,
+        onPrivateLibraryClick = onPrivateLibraryClick,
         onLibraryClick = onBookFolderClick,
         onSearchClick = { onActiveChange(true) },
         onSettingsClick = onSettingsClick,
@@ -73,6 +77,9 @@ internal fun BookOverviewTopBar(
 
 @Composable
 private fun MyLibraryHeader(
+  title: String,
+  privateLibrary: BookOverviewViewState.PrivateLibrary?,
+  onPrivateLibraryClick: () -> Unit,
   onLibraryClick: () -> Unit,
   onSearchClick: () -> Unit,
   onSettingsClick: () -> Unit,
@@ -85,12 +92,22 @@ private fun MyLibraryHeader(
     verticalAlignment = Alignment.CenterVertically,
   ) {
     Text(
-      text = "My Library",
+      text = title,
       fontSize = 24.sp,
       fontWeight = FontWeight.Medium,
       letterSpacing = (-0.12).sp,
     )
     Spacer(Modifier.weight(1F))
+    if (privateLibrary != null) {
+      IconButton(onClick = onPrivateLibraryClick) {
+        Icon(
+          painter = painterResource(
+            if (privateLibrary == BookOverviewViewState.PrivateLibrary.Open) UiR.drawable.ic_incognito_fill else UiR.drawable.ic_incognito,
+          ),
+          contentDescription = null,
+        )
+      }
+    }
     IconButton(onClick = onSearchClick) {
       Icon(painter = painterResource(UiR.drawable.ic_mage_search), contentDescription = null)
     }
@@ -129,6 +146,7 @@ private fun BookOverviewTopBarPreview() {
         miniPlayer = null,
         selectedCategoryIndex = null,
       ),
+      onPrivateLibraryClick = {},
       onBookFolderClick = {},
       onSettingsClick = {},
       onActiveChange = {},

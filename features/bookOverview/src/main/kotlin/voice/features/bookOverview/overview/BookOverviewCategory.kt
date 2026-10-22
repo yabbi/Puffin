@@ -23,15 +23,10 @@ enum class BookOverviewCategory(
     nameRes = StringsR.string.book_header_completed,
     comparator = BookComparator.ByLastPlayed,
   ),
-  ADULT(
-    nameRes = StringsR.string.book_header_adult,
-    comparator = BookComparator.ByLastPlayed,
-  ),
 }
 
 val Book.category: BookOverviewCategory
   get() {
-    if (content.isAdult) return BookOverviewCategory.ADULT
     return when (progressCategory) {
       BookProgressCategory.NOT_STARTED -> BookOverviewCategory.NOT_STARTED
       BookProgressCategory.CURRENT -> BookOverviewCategory.CURRENT

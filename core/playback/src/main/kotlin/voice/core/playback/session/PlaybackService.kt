@@ -8,6 +8,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.runBlocking
 import voice.core.common.rootGraphAs
 import voice.core.logging.api.Logger
+import voice.core.playback.adult.AdultCarGuard
 import voice.core.playback.di.PlaybackGraph
 import voice.core.playback.player.VoicePlayer
 import voice.core.playback.playstate.PositionUpdater
@@ -29,6 +30,9 @@ class PlaybackService : MediaLibraryService() {
   @Inject
   lateinit var voiceNotificationProvider: VoiceMediaNotificationProvider
 
+  @Inject
+  lateinit var adultCarGuard: AdultCarGuard
+
   override fun onCreate() {
     super.onCreate()
     rootGraphAs<PlaybackGraph.Provider>()
@@ -36,6 +40,7 @@ class PlaybackService : MediaLibraryService() {
       .create(this)
       .inject(this)
     setMediaNotificationProvider(voiceNotificationProvider)
+    adultCarGuard.attach()
   }
 
   private fun release() {

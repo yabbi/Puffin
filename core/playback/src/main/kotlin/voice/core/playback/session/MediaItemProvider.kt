@@ -15,6 +15,7 @@ import voice.core.data.BookContent
 import voice.core.data.BookId
 import voice.core.data.BookProgressCategory
 import voice.core.data.Chapter
+import voice.core.data.markNumber
 import voice.core.data.progressCategory
 import voice.core.data.repo.BookContentRepo
 import voice.core.data.repo.BookRepository
@@ -61,9 +62,14 @@ class MediaItemProvider(
       }
       is MediaId.Chapter -> {
         val content = contentRepo.get(mediaId.bookId) ?: return null
-        chapterRepo.get(mediaId.chapterId)?.let {
-          mediaItem(it, content)
+        val chapter = chapterRepo.get(mediaId.chapterId) ?: return null
+        val firstMarkNumber = if (content.isAdult) {
+          val book = bookRepository.get(mediaId.bookId) ?: return null
+          book.chapters.markNumber(book.chapters.indexOf(chapter).coerceAtLeast(0), 0)
+        } else {
+          0
         }
+        mediaItem(chapter, content, firstMarkNumber)
       }
       MediaId.Recent -> recent()
     }
@@ -93,10 +99,11 @@ class MediaItemProvider(
   }
 
   internal fun chapters(book: Book): List<MediaItem> {
-    return book.chapters.map { chapter ->
+    return book.chapters.mapIndexed { index, chapter ->
       mediaItem(
         chapter = chapter,
         content = book.content,
+        firstMarkNumber = book.chapters.markNumber(index, 0),
       )
     }
   }
@@ -124,7 +131,7 @@ class MediaItemProvider(
       MediaId.Recent -> {
         val bookId = currentBookStoreId.data.first() ?: return null
         val book = bookRepository.get(bookId) ?: return null
-        listOf(mediaItem(book))
+        listOfNotNull(book.takeUnless { it.content.isAdult }?.let(::mediaItem))
       }
     }
   }
@@ -161,15 +168,14 @@ class MediaItemProvider(
     redacted = book.content.isAdult,
   )
 
+  // Redacted titles only number chapter marks; VoicePlayer renumbers them as playback crosses marks.
   private fun mediaItem(
     chapter: Chapter,
     content: BookContent,
+    firstMarkNumber: Int,
   ) = if (content.isAdult) {
     MediaItem(
-      title = application.getString(
-        StringsR.string.media_session_redacted_chapter,
-        content.chapters.indexOf(chapter.id) + 1,
-      ),
+      title = redactedChapterTitle(firstMarkNumber),
       mediaId = MediaId.Chapter(bookId = content.id, chapterId = chapter.id),
       browsable = false,
       isPlayable = true,
@@ -190,6 +196,8 @@ class MediaItemProvider(
       mediaType = MediaType.AudioBookChapter,
     )
   }
+
+  fun redactedChapterTitle(markNumber: Int): String = application.getString(StringsR.string.media_session_redacted_chapter, markNumber)
 
   private fun redactedBookTitle(): String = application.getString(StringsR.string.media_session_redacted_book)
 

@@ -11,6 +11,7 @@ import dev.zacsweers.metro.SingleIn
 import kotlinx.serialization.builtins.MapSerializer
 import kotlinx.serialization.builtins.nullable
 import kotlinx.serialization.builtins.serializer
+import voice.core.data.AdultCarSwap
 import voice.core.data.BookId
 import voice.core.data.GridMode
 import voice.core.data.PlaybackTimeDisplay
@@ -159,6 +160,17 @@ public interface StoreModule {
     return factory.create(
       serializer = BookId.serializer().nullable,
       fileName = "currentBook",
+      defaultValue = null,
+    )
+  }
+
+  @Provides
+  @SingleIn(AppScope::class)
+  @AdultCarSwapStore
+  private fun adultCarSwap(factory: VoiceDataStoreFactory): DataStore<AdultCarSwap?> {
+    return factory.create(
+      serializer = AdultCarSwap.serializer().nullable,
+      fileName = "adultCarSwap",
       defaultValue = null,
     )
   }

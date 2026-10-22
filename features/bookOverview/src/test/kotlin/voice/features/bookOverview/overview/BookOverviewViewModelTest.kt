@@ -3,6 +3,7 @@ package voice.features.bookOverview.overview
 import androidx.datastore.core.DataStore
 import app.cash.molecule.RecompositionMode
 import app.cash.molecule.launchMolecule
+import app.cash.turbine.ReceiveTurbine
 import app.cash.turbine.test
 import io.kotest.matchers.shouldBe
 import io.mockk.Runs
@@ -89,18 +90,17 @@ class BookOverviewViewModelTest {
       awaitItem() shouldBe BookOverviewViewState.Loading
       val state = awaitItem()
 
-      state.adultSection shouldBe BookOverviewViewState.AdultSection.Locked
+      state.privateLibrary shouldBe BookOverviewViewState.PrivateLibrary.Locked
       state.books.keys shouldBe setOf(BookOverviewCategory.NOT_STARTED)
       state.books.getValue(BookOverviewCategory.NOT_STARTED).keys shouldBe setOf(regularBook.id)
     }
   }
 
   @Test
-  fun `unlocking shows adult books in their own category`() = runTest {
+  fun `unlocking alone keeps adult books out of the regular library`() = runTest {
     val regularBook = book(name = "Regular", time = 0)
     val adultBook = book(name = "Adult", time = 0, isAdult = true)
-    val lock = AdultLibraryLock()
-    val viewModel = viewModel(books = listOf(regularBook, adultBook), lock = lock)
+    val viewModel = viewModel(books = listOf(regularBook, adultBook))
 
     backgroundScope.launchMolecule(RecompositionMode.Immediate) {
       viewModel.state()
@@ -111,8 +111,54 @@ class BookOverviewViewModelTest {
       viewModel.onAdultLibraryUnlocked()
       val state = awaitItem()
 
-      state.adultSection shouldBe BookOverviewViewState.AdultSection.Unlocked
-      state.books.getValue(BookOverviewCategory.ADULT).keys shouldBe setOf(adultBook.id)
+      state.privateLibrary shouldBe BookOverviewViewState.PrivateLibrary.Unlocked
+      state.books.getValue(BookOverviewCategory.NOT_STARTED).keys shouldBe setOf(regularBook.id)
+    }
+  }
+
+  @Test
+  fun `the private library shows only adult books sorted into the progress tabs`() = runTest {
+    val regularBook = book(name = "Regular", time = 0)
+    val newAdultBook = book(name = "New", time = 0, isAdult = true)
+    val startedAdultBook = book(name = "Started", time = 1_000, isAdult = true)
+    val viewModel = viewModel(books = listOf(regularBook, newAdultBook, startedAdultBook))
+
+    backgroundScope.launchMolecule(RecompositionMode.Immediate) {
+      viewModel.state()
+    }.test {
+      awaitItem() shouldBe BookOverviewViewState.Loading
+      awaitItem()
+
+      viewModel.onAdultLibraryUnlocked()
+      awaitUntil { it.privateLibrary == BookOverviewViewState.PrivateLibrary.Unlocked }
+      viewModel.onTogglePrivateLibrary()
+      val state = awaitUntil { it.privateLibrary == BookOverviewViewState.PrivateLibrary.Open }
+
+      state.books.getValue(BookOverviewCategory.NOT_STARTED).keys shouldBe setOf(newAdultBook.id)
+      state.books.getValue(BookOverviewCategory.CURRENT).keys shouldBe setOf(startedAdultBook.id)
+    }
+  }
+
+  @Test
+  fun `locking closes the private library`() = runTest {
+    val regularBook = book(name = "Regular", time = 0)
+    val adultBook = book(name = "Adult", time = 0, isAdult = true)
+    val lock = AdultLibraryLock()
+    val viewModel = viewModel(books = listOf(regularBook, adultBook), lock = lock)
+
+    backgroundScope.launchMolecule(RecompositionMode.Immediate) {
+      viewModel.state()
+    }.test {
+      awaitItem() shouldBe BookOverviewViewState.Loading
+      awaitItem()
+      viewModel.onAdultLibraryUnlocked()
+      awaitUntil { it.privateLibrary == BookOverviewViewState.PrivateLibrary.Unlocked }
+      viewModel.onTogglePrivateLibrary()
+      awaitUntil { it.privateLibrary == BookOverviewViewState.PrivateLibrary.Open }
+
+      lock.lock()
+      val state = awaitUntil { it.privateLibrary == BookOverviewViewState.PrivateLibrary.Locked }
+
       state.books.getValue(BookOverviewCategory.NOT_STARTED).keys shouldBe setOf(regularBook.id)
     }
   }
@@ -125,7 +171,7 @@ class BookOverviewViewModelTest {
       viewModel.state()
     }.test {
       awaitItem() shouldBe BookOverviewViewState.Loading
-      awaitItem().adultSection shouldBe null
+      awaitItem().privateLibrary shouldBe null
     }
   }
 
@@ -143,6 +189,16 @@ class BookOverviewViewModelTest {
       miniPlayer.locked shouldBe true
       miniPlayer.chapterTitle shouldBe "Chapter 1"
       miniPlayer.author shouldBe "Audiobook"
+    }
+  }
+
+  @IgnorableReturnValue
+  private suspend fun ReceiveTurbine<BookOverviewViewState>.awaitUntil(
+    predicate: (BookOverviewViewState) -> Boolean,
+  ): BookOverviewViewState {
+    while (true) {
+      val item = awaitItem()
+      if (predicate(item)) return item
     }
   }
 

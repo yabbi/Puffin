@@ -82,8 +82,8 @@ interface BookOverviewProvider {
 
 // Chip / pager order: Not started, In Progress, Completed.
 private val categoryOrder = listOf(
-  BookOverviewCategory.NOT_STARTED,
   BookOverviewCategory.CURRENT,
+  BookOverviewCategory.NOT_STARTED,
   BookOverviewCategory.FINISHED,
 )
 
@@ -139,6 +139,7 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
     onMiniPlayerClick = bookOverviewViewModel::onMiniPlayerClick,
     onCategorySelected = bookOverviewViewModel::onCategorySelected,
     onAdultUnlocked = bookOverviewViewModel::onAdultLibraryUnlocked,
+    onTogglePrivateLibrary = bookOverviewViewModel::onTogglePrivateLibrary,
   )
   val deleteBookViewState = deleteBookViewModel.state.value
   if (deleteBookViewState != null) {
@@ -298,11 +299,11 @@ internal fun BookOverview(
   modifier: Modifier = Modifier,
   onCategorySelected: (Int) -> Unit = {},
   onAdultUnlocked: () -> Unit = {},
+  onTogglePrivateLibrary: () -> Unit = {},
   snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
   val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
   val scope = rememberCoroutineScope()
-  val pages = if (viewState.adultSection != null) categoryOrder + BookOverviewCategory.ADULT else categoryOrder
   var afterUnlock by remember { mutableStateOf<() -> Unit>({}) }
   val unlockPrompt = rememberAdultUnlockPrompt {
     onAdultUnlocked()
@@ -318,6 +319,13 @@ internal fun BookOverview(
     topBar = {
       BookOverviewTopBar(
         viewState = viewState,
+        onPrivateLibraryClick = {
+          if (viewState.privateLibrary == BookOverviewViewState.PrivateLibrary.Locked) {
+            unlockThen(onTogglePrivateLibrary)
+          } else {
+            onTogglePrivateLibrary()
+          }
+        },
         onBookFolderClick = onBookFolderClick,
         onSettingsClick = onSettingsClick,
         onActiveChange = onSearchActiveChange,
@@ -352,7 +360,7 @@ internal fun BookOverview(
         .padding(contentPadding)
         .consumeWindowInsets(contentPadding),
     ) {
-      val pagerState = rememberPagerState(initialPage = 0) { pages.size }
+      val pagerState = rememberPagerState(initialPage = 0) { categoryOrder.size }
 
       // Restore the last-used tab once the persisted value has loaded; falls back to the
       // default category the first time the library is opened. Applied only once.
@@ -374,34 +382,31 @@ internal fun BookOverview(
         }
       }
 
-      fun showAdultPage() {
-        scope.launch { pagerState.animateScrollToPage(pages.indexOf(BookOverviewCategory.ADULT)) }
+      // Switching between the regular and private library lands on that library's best tab.
+      val privateLibraryOpen = viewState.privateLibrary == BookOverviewViewState.PrivateLibrary.Open
+      var shownLibraryIsPrivate by rememberSaveable { mutableStateOf(privateLibraryOpen) }
+      LaunchedEffect(privateLibraryOpen, viewState.books.keys) {
+        if (initialApplied && privateLibraryOpen != shownLibraryIsPrivate) {
+          shownLibraryIsPrivate = privateLibraryOpen
+          pagerState.scrollToPage(defaultFilterIndex(viewState))
+        }
       }
+
       FilterChips(
         selectedIndex = pagerState.targetPage,
         onSelect = { index -> scope.launch { pagerState.animateScrollToPage(index) } },
-        adultSection = viewState.adultSection,
-        onAdultClick = {
-          if (viewState.adultSection == BookOverviewViewState.AdultSection.Locked) {
-            unlockThen(::showAdultPage)
-          } else {
-            showAdultPage()
-          }
-        },
       )
       HorizontalPager(
         state = pagerState,
         modifier = Modifier.fillMaxSize(),
         beyondViewportPageCount = 1,
-        key = { page -> pages[page] },
+        key = { page -> categoryOrder[page] },
       ) { page ->
-        val category = pages[page]
+        val category = categoryOrder[page]
         val entries = remember(viewState.books, category) {
           viewState.books[category].orEmpty().toList()
         }
-        if (category == BookOverviewCategory.ADULT && viewState.adultSection == BookOverviewViewState.AdultSection.Locked) {
-          LockedAdultSection(onUnlock = { unlockThen {} })
-        } else if (entries.isEmpty() && !viewState.showStoragePermissionBugCard) {
+        if (entries.isEmpty() && !viewState.showStoragePermissionBugCard) {
           EmptyCategory(category = category, isLoading = viewState.isLoading)
         } else {
           when (viewState.layoutMode) {
@@ -439,15 +444,7 @@ internal fun BookOverview(
 }
 
 private fun defaultFilterIndex(viewState: BookOverviewViewState): Int {
-  // After a fresh scan books land in "Not started", so prefer that, then In Progress, then Completed.
-  val preference = listOf(
-    BookOverviewCategory.NOT_STARTED,
-    BookOverviewCategory.CURRENT,
-    BookOverviewCategory.FINISHED,
-  )
-  val category = preference.firstOrNull { viewState.books[it]?.isNotEmpty() == true }
-    ?: BookOverviewCategory.NOT_STARTED
-  return categoryOrder.indexOf(category).coerceAtLeast(0)
+  return categoryOrder.indexOfFirst { viewState.books[it]?.isNotEmpty() == true }.coerceAtLeast(0)
 }
 
 @Suppress("ktlint:compose:preview-public-check")

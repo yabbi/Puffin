@@ -20,6 +20,7 @@ dependencies {
   implementation(projects.core.initializer)
 
   implementation(libs.androidxCore)
+  implementation(libs.carApp)
   implementation(libs.coil)
   implementation(libs.coroutines.guava)
   implementation(libs.serialization.json)

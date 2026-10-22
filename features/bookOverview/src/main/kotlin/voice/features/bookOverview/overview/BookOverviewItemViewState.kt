@@ -3,6 +3,7 @@ package voice.features.bookOverview.overview
 import androidx.compose.runtime.Immutable
 import voice.core.data.Book
 import voice.core.data.BookId
+import voice.core.data.currentMarkNumber
 import voice.core.logging.api.Logger
 import voice.core.ui.ImmutableFile
 import voice.core.ui.formatTime
@@ -49,7 +50,7 @@ internal fun Book.toMiniPlayerViewState(
 ) = MiniPlayerViewState(
   id = id,
   // Mirrors the redacted notification so a locked adult book reveals nothing.
-  chapterTitle = if (locked) "Chapter ${content.currentChapterIndex + 1}" else currentMark.name ?: currentChapter.name ?: content.name,
+  chapterTitle = if (locked) "Chapter $currentMarkNumber" else currentMark.name ?: currentChapter.name ?: content.name,
   author = if (locked) "Audiobook" else content.author,
   cover = content.cover?.takeUnless { locked }?.let(::ImmutableFile),
   accentColor = content.accentColor.takeUnless { locked },

@@ -21,12 +21,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import voice.features.bookOverview.overview.BookOverviewCategory
-import voice.features.bookOverview.overview.BookOverviewViewState.AdultSection
 import voice.core.ui.R as UiR
 
 internal val bookFilters = listOf(
-  Triple(BookOverviewCategory.NOT_STARTED, "Not started", UiR.drawable.ic_mage_inbox),
   Triple(BookOverviewCategory.CURRENT, "In Progress", UiR.drawable.ic_mage_chart_15),
+  Triple(BookOverviewCategory.NOT_STARTED, "Not started", UiR.drawable.ic_mage_inbox),
   Triple(BookOverviewCategory.FINISHED, "Completed", UiR.drawable.ic_mage_inbox_check),
 )
 
@@ -34,8 +33,6 @@ internal val bookFilters = listOf(
 internal fun FilterChips(
   selectedIndex: Int,
   onSelect: (Int) -> Unit,
-  adultSection: AdultSection?,
-  onAdultClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   Row(
@@ -53,23 +50,12 @@ internal fun FilterChips(
         onClick = { onSelect(index) },
       )
     }
-    if (adultSection != null) {
-      FilterChip(
-        label = null,
-        iconRes = when (adultSection) {
-          AdultSection.Locked -> UiR.drawable.ic_mage_lock
-          AdultSection.Unlocked -> UiR.drawable.ic_mage_unlocked
-        },
-        selected = selectedIndex == bookFilters.size,
-        onClick = onAdultClick,
-      )
-    }
   }
 }
 
 @Composable
 private fun FilterChip(
-  label: String?,
+  label: String,
   iconRes: Int,
   selected: Boolean,
   onClick: () -> Unit,
@@ -83,7 +69,7 @@ private fun FilterChip(
     contentColor = if (selected) colors.inverse else colors.subTitle,
   ) {
     Row(
-      modifier = Modifier.padding(horizontal = if (label == null) 16.dp else 10.dp, vertical = 10.dp),
+      modifier = Modifier.padding(10.dp),
       horizontalArrangement = Arrangement.Center,
       verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -92,12 +78,9 @@ private fun FilterChip(
         contentDescription = null,
         modifier = Modifier.size(14.dp),
       )
-      if (label != null) {
-        Spacer(Modifier.width(4.dp))
-      }
-      // An empty label still occupies a text line, keeping icon-only chips as tall as the others.
+      Spacer(Modifier.width(4.dp))
       Text(
-        text = label.orEmpty(),
+        text = label,
         fontSize = 12.sp,
         fontWeight = FontWeight.Medium,
         letterSpacing = (-0.06).sp,

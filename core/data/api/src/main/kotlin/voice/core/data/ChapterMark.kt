@@ -38,6 +38,19 @@ public fun Chapter.markForPosition(positionInChapterMs: Long): ChapterMark {
     ?: chapterMarks.first()
 }
 
+/** 1-based number of the chapter mark at the position, counted across all files of the book. */
+public fun List<Chapter>.markNumber(
+  chapterIndex: Int,
+  positionInChapterMs: Long,
+): Int {
+  val chapter = this[chapterIndex]
+  val marksBefore = take(chapterIndex).sumOf { it.chapterMarks.size }
+  return marksBefore + chapter.chapterMarks.indexOf(chapter.markForPosition(positionInChapterMs)) + 1
+}
+
+public val Book.currentMarkNumber: Int
+  get() = chapters.markNumber(content.currentChapterIndex, content.positionInChapter)
+
 /**
  * Resolves the human-facing chapter name and the position/length *within that chapter mark*
  * (not the whole audio file, not the global book position) for a position inside this chapter.

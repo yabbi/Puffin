@@ -77,6 +77,7 @@ class BookOverviewViewModel(
   private val scope = MainScope()
   private var searchActive by mutableStateOf(false)
   private var query by mutableStateOf("")
+  private var privateLibraryOpen by mutableStateOf(false)
 
   fun attach() {
     mediaScanner.scan()
@@ -91,7 +92,11 @@ class BookOverviewViewModel(
     val books = remember { repo.flow() }
       .collectAsState(initial = emptyList()).value
     val adultUnlocked = remember { adultLibraryLock.unlocked }.collectAsState().value
-    val visibleBooks = books.filter { !it.content.isAdult || adultUnlocked }
+    LaunchedEffect(adultUnlocked) {
+      if (!adultUnlocked) privateLibraryOpen = false
+    }
+    val showAdult = privateLibraryOpen && adultUnlocked
+    val visibleBooks = books.filter { it.content.isAdult == showAdult }
     val currentBookId = remember { currentBookStoreDataStore.data }
       .collectAsState(initial = null).value
     val scannerActive = remember { mediaScanner.scannerActive }
@@ -169,16 +174,21 @@ class BookOverviewViewModel(
         }
       },
       selectedCategoryIndex = selectedCategoryIndex,
-      adultSection = when {
+      privateLibrary = when {
         books.none { it.content.isAdult } -> null
-        adultUnlocked -> BookOverviewViewState.AdultSection.Unlocked
-        else -> BookOverviewViewState.AdultSection.Locked
+        showAdult -> BookOverviewViewState.PrivateLibrary.Open
+        adultUnlocked -> BookOverviewViewState.PrivateLibrary.Unlocked
+        else -> BookOverviewViewState.PrivateLibrary.Locked
       },
     )
   }
 
   fun onAdultLibraryUnlocked() {
     adultLibraryLock.unlock()
+  }
+
+  fun onTogglePrivateLibrary() {
+    privateLibraryOpen = !privateLibraryOpen && adultLibraryLock.unlocked.value
   }
 
   fun onCategorySelected(index: Int) {

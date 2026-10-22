@@ -26,12 +26,14 @@ class BookSearchHandlerTest {
 
   private val repo = mockk<BookRepository>()
   private val currentBookId = MemoryDataStore<BookId?>(null)
+  private var books: List<Book>
 
   private val anotherBook = book(listOf(chapter(), chapter()))
   private val bookToFind = book(listOf(chapter(), chapter()))
 
   init {
-    coEvery { repo.all() } coAnswers { listOf(anotherBook, bookToFind) }
+    books = listOf(anotherBook, bookToFind)
+    coEvery { repo.all() } coAnswers { books }
 
     searchHandler = BookSearchHandler(repo, currentBookId)
   }
@@ -40,6 +42,22 @@ class BookSearchHandlerTest {
   fun unstructuredSearchByBook() = runTest {
     val bookSearch = VoiceSearch(query = bookToFind.content.name)
     searchHandler.handle(bookSearch) shouldBe bookToFind
+  }
+
+  @Test
+  fun adultBooksAreExcludedFromCarSearches() = runTest {
+    val adultBook = bookToFind.copy(content = bookToFind.content.copy(isAdult = true))
+    books = listOf(anotherBook, adultBook)
+
+    searchHandler.handle(VoiceSearch(query = adultBook.content.name), excludeAdult = true).shouldBeNull()
+  }
+
+  @Test
+  fun adultBooksAreFound() = runTest {
+    val adultBook = bookToFind.copy(content = bookToFind.content.copy(isAdult = true))
+    books = listOf(anotherBook, adultBook)
+
+    searchHandler.handle(VoiceSearch(query = adultBook.content.name)) shouldBe adultBook
   }
 
   @Test
